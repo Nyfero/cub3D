@@ -16,10 +16,11 @@ typedef struct s_wall
 	void			*so;
 	void			*we;
 	void			*ea;
+	int				size;
 
 	int				fl;
 	int				cl;
-	
+
 	struct s_wall	*next;
 
 }	t_wall;
@@ -38,9 +39,27 @@ typedef struct s_data
 	void		*win;
 
 	t_wall		wall;
-	t_player	pl;
+	t_player	*pl;
 	char		**map;
 
 }	t_data;
+
+//	check_args.c
+int		check_args(int argc, char **argv);
+int		check_good_format(char *file);
+int		error_file(int err);
+
+//	parsing.c
+int		parsing(t_data *data, char *file);
+void	init_wall(t_data *data);
+
+//	parsing_texture.c
+int		parse_wall(t_data *data, char *file);
+int		parse_texture(t_data *data, char *line);
+int		get_texture(t_data *data, char ** tab);
+int		get_color(char *line);
+
+//	exit.c
+void	free_img(t_data *data);
 
 #endif
