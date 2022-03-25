@@ -1,5 +1,13 @@
 #include "cub3D.h"
 
+void	exit_before_exec(t_data *data)
+{
+	free_img(data);
+	ft_free_ls(data->map.m);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+}
+
 void	free_img(t_data *data)
 {
 	if (data->wall.no)

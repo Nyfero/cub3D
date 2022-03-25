@@ -57,5 +57,13 @@ int	error_file(int err)
 		ft_putendl_fd("Unvalid file", 2);
 	else if (err == 6)
 		ft_putendl_fd("Unvalid texture", 2);
+	else if (err == 7)
+		ft_putendl_fd("Map to small", 2);
+	else if (err == 8)
+		ft_putendl_fd("Unvalid map", 2);
+	else if (err == 9)
+		ft_putendl_fd("Map not closed", 2);
+	else if (err == 10)
+		ft_putendl_fd("To much player on the map", 2);
 	return (1);
 }

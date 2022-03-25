@@ -11,10 +11,11 @@ int	main(int argc, char **argv)
 		return (2);
 	if (parsing(&data, argv[1]))
 	{
-		mlx_destroy_display(data.mlx);
-		free(data.mlx);
+		exit_before_exec(&data);
 		return (3);
 	}
+	free_img(&data);
+	ft_free_ls(data.map.m);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
 	return (0);

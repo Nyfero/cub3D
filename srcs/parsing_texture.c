@@ -15,7 +15,7 @@ int	parse_wall(t_data *data, char *file)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		if (parse_texture(data, line))
 		{
 			free(line);
@@ -58,16 +58,16 @@ int	get_texture(t_data *data, char **tab)
 {
 	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0])) && !data->wall.no)
 		data->wall.no = mlx_xpm_file_to_image(data->mlx,
-			tab[1], &data->wall.size, &data->wall.size);
+				tab[1], &data->wall.size, &data->wall.size);
 	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0])) && !data->wall.so)
 		data->wall.so = mlx_xpm_file_to_image(data->mlx,
-			tab[1], &data->wall.size, &data->wall.size);
+				tab[1], &data->wall.size, &data->wall.size);
 	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0])) && !data->wall.we)
 		data->wall.we = mlx_xpm_file_to_image(data->mlx,
-			tab[1], &data->wall.size, &data->wall.size);
+				tab[1], &data->wall.size, &data->wall.size);
 	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !data->wall.ea)
 		data->wall.ea = mlx_xpm_file_to_image(data->mlx,
-			tab[1], &data->wall.size, &data->wall.size);
+				tab[1], &data->wall.size, &data->wall.size);
 	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && !data->wall.cl)
 		data->wall.cl = get_color(tab[1]);
 	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && !data->wall.fl)
