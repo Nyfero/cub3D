@@ -67,12 +67,6 @@ typedef struct s_data
 
 }	t_data;
 
-<<<<<<< HEAD
-//	print_info.c
-void	print_map(t_data *data);
-void	print_player(t_data *data);
-
-=======
 typedef struct s_check
 {
 	float	rx;
@@ -81,21 +75,10 @@ typedef struct s_check
 	float	yo;
 }	t_check;
 
-//	texture.c
-void	ft_affichage_map(t_data *d);
-void	ft_put_img(t_data *d, void *image, int x, int y);
-void	ft_creation_img(t_data *d);
+//	print_info.c
+void	print_map(t_data *data);
+void	print_player(t_data *data);
 
-//	game.c
-int	ft_game(t_data d);
-
-//	exit_jgour.c
-int	cub3d_exit(t_data *d);
-
-//	check_deplacement.c
-int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
-int	ft_check_deplacement_2(t_data *d, t_player *p);
->>>>>>> 7c64ef4dae6220ab70cf30ea51fc6bf4b2a50c2d
 //	check_args.c
 int		check_args(int argc, char **argv);
 int		check_good_format(char *file);
@@ -133,7 +116,6 @@ int		place_player(t_data *data, int i, int j);
 //	exit.c
 void 	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
-<<<<<<< HEAD
 
 
 
@@ -150,23 +132,21 @@ int	ft_game(t_data d);
 
 //	exit_jgour.c
 int	cub3d_exit(t_data *d);
-=======
->>>>>>> 7c64ef4dae6220ab70cf30ea51fc6bf4b2a50c2d
+
+//	check_deplacement.c
+int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
+int	ft_check_deplacement_2(t_data *d, t_player *p);
 
 //	render_3d.c
 void	ft_3d_render(t_data *d);
 
-<<<<<<< HEAD
-//	check_deplacement.c
-int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
-int	ft_check_deplacement_2(t_data *d, t_player *p);
-=======
 //	check_horizon.c
 float	ft_check_horizontal(t_data *d, t_player *pl);
 
 //	check_vertical.c
 float	ft_check_vertical(t_data *d, t_player *pl);
+
 //	calc_utils.c
 float	ft_dist(float x, float y, float x2, float y2);
->>>>>>> 7c64ef4dae6220ab70cf30ea51fc6bf4b2a50c2d
+
 #endif

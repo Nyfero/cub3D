@@ -34,7 +34,7 @@ int	place_player(t_data *data, int i, int j)
 		return (error_file(10));
 	data->pl->xp = j * data->size;
 	data->pl->yp = i * data->size;
-	data->pl->dxp = (cos(p->ap) * MV);
-	data->pl->dyp = (sin(p->ap) * MV);
+	data->pl->dxp = (cos(data->pl->ap) * MV);
+	data->pl->dyp = (sin(data->pl->ap) * MV);
 	return (0);
 }
