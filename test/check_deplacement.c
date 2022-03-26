@@ -7,7 +7,7 @@ int	ft_check_wall(float x, float y, t_data *d)
 
 	pos_x = (int)x / d->size;
 	pos_y = (int)y / d->size;
-	if (d->map[pos_x][pos_y] == '1')
+	if (d->map.m[pos_x][pos_y] == '1')
 		return (1);
 	return (0);
 }
