@@ -15,12 +15,19 @@
 # define P3 3 * PI / 2
 # define MV 5
 
+typedef struct	s_img
+{
+	void	*i;
+	int		w;
+	int		h;
+}	t_img;
+
 typedef struct s_wall
 {
-	void			*no;
-	void			*so;
-	void			*we;
-	void			*ea;
+	t_img			no;
+	t_img			so;
+	t_img			we;
+	t_img			ea;
 	int				size;
 
 	int				fl;

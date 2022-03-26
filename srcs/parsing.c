@@ -3,8 +3,14 @@
 int	parsing(t_data *data, char *file)
 {
 	init_wall(data);
-	/*if (parse_wall(data, file))
-		return (1);*/
+	if (parse_wall(data, file))
+		return (1);
+	printf("NO:%p\nSO:%p\nWE:%p\nEA:%p\n", data->wall.no.i ,data->wall.so.i ,data->wall.we.i ,data->wall.ea.i);
+	if (!data->wall.no.i || !data->wall.so.i || !data->wall.we.i || !data->wall.ea.i)
+	{
+		free_img(data);
+		return (error_file(6));
+	}
 	if (parse_map(data, file))
 		return (1);
 	return (0);
@@ -12,10 +18,10 @@ int	parsing(t_data *data, char *file)
 
 void	init_wall(t_data *data)
 {
-	data->wall.no = NULL;
-	data->wall.so = NULL;
-	data->wall.we = NULL;
-	data->wall.ea = NULL;
+	data->wall.no.i = NULL;
+	data->wall.so.i = NULL;
+	data->wall.we.i = NULL;
+	data->wall.ea.i = NULL;
 	data->wall.size = 64;
 	data->wall.fl = 0;
 	data->wall.cl = 0;
