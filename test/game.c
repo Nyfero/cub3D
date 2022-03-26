@@ -91,7 +91,7 @@ int	ft_game_event(int keycode, t_data *d)
 	if (keycode == 100)
 		ft_deplacement_hor(d, 1, d->pl);
 	ft_affichage_map(d);
-	ft_rendu_3d(d);
+	ft_3d_render(d);
 	return (0);
 }
 

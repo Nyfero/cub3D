@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -10,6 +11,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+=======
+>>>>>>> 7c64ef4dae6220ab70cf30ea51fc6bf4b2a50c2d
 # valgrind --leak-check=full --track-fds=yes --trace-children=yes --track-origins=yes --show-leak-kinds=all
 
 #    Colors
@@ -48,12 +51,18 @@ SRCS_PATH = srcs
 TEST_PATH = test
 
 #    Files
+<<<<<<< HEAD
 FILES = main.c check_args.c parsing.c parsing_texture.c parsing_map.c exit.c \
 	print_info.c check_map.c parsing_player.c
+=======
+FILES = main.c check_args.c parsing.c parsing_texture.c exit.c
+>>>>>>> 7c64ef4dae6220ab70cf30ea51fc6bf4b2a50c2d
 
 FILES_TEST = main_test.c game.c \
-		exit_jgour.c print_2d.c texture.c \
-		check_deplacement.c
+		exit_jgour.c texture.c \
+		check_deplacement.c render_3d.c \
+		check_horizon.c check_vertical.c \
+		calc_utils.c
 
 #    Compilation
 NAME = cub3D
