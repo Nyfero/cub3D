@@ -65,5 +65,7 @@ int	error_file(int err)
 		ft_putendl_fd("Map not closed", 2);
 	else if (err == 10)
 		ft_putendl_fd("To much player on the map", 2);
+	else if (err == 11)
+		ft_putendl_fd("Map is to big", 2);
 	return (1);
 }

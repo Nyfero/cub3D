@@ -3,8 +3,8 @@
 int	parsing(t_data *data, char *file)
 {
 	init_wall(data);
-	if (parse_wall(data, file))
-		return (1);
+	/*if (parse_wall(data, file))
+		return (1);*/
 	if (parse_map(data, file))
 		return (1);
 	return (0);
