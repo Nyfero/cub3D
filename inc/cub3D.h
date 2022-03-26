@@ -11,6 +11,8 @@
 # include "../minilibx-linux/mlx.h"
 
 # define PI 3.1415926535
+# define P2 PI / 2
+# define P3 3 * PI / 2
 # define MV 5
 
 typedef struct s_wall
@@ -19,6 +21,7 @@ typedef struct s_wall
 	void			*so;
 	void			*we;
 	void			*ea;
+	int				size;
 
 	int				fl;
 	int				cl;
@@ -53,8 +56,17 @@ typedef struct s_data
 	void		*s;
 	void		*w;
 	void		*p;
+	void		*win3d;
 
 }	t_data;
+
+typedef struct s_check
+{
+	float	rx;
+	float	ry;
+	float	xo;
+	float	yo;
+}	t_check;
 
 //	texture.c
 void	ft_affichage_map(t_data *d);
@@ -67,11 +79,35 @@ int	ft_game(t_data d);
 //	exit_jgour.c
 int	cub3d_exit(t_data *d);
 
-//	print_2d.c
-void	ft_aff_2d(t_data d);
-
 //	check_deplacement.c
 int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
 int	ft_check_deplacement_2(t_data *d, t_player *p);
+//	check_args.c
+int		check_args(int argc, char **argv);
+int		check_good_format(char *file);
+int		error_file(int err);
 
+//	parsing.c
+int		parsing(t_data *data, char *file);
+void	init_wall(t_data *data);
+
+//	parsing_texture.c
+int		parse_wall(t_data *data, char *file);
+int		parse_texture(t_data *data, char *line);
+int		get_texture(t_data *data, char ** tab);
+int		get_color(char *line);
+
+//	exit.c
+void	free_img(t_data *data);
+
+//	render_3d.c
+void	ft_3d_render(t_data *d);
+
+//	check_horizon.c
+float	ft_check_horizontal(t_data *d, t_player *pl);
+
+//	check_vertical.c
+float	ft_check_vertical(t_data *d, t_player *pl);
+//	calc_utils.c
+float	ft_dist(float x, float y, float x2, float y2);
 #endif

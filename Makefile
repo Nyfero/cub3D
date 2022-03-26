@@ -1,16 +1,4 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/22 18:36:37 by jgourlin          #+#    #+#              #
-#    Updated: 2022/03/24 19:01:05 by jgourlin         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# valgrind --leak-check=full --track-fds=yes --trace-children=yes --track-origins=yes --show-leak-kinds=all --suppressions=.ignore_readline -q ./minishell
+# valgrind --leak-check=full --track-fds=yes --trace-children=yes --track-origins=yes --show-leak-kinds=all
 
 #    Colors
 GREY = \e[90m
@@ -46,12 +34,13 @@ MLX = $(addprefix $(MLX_PATH)/,libmlx_Linux.a libmlx.a)
 SRCS_PATH = srcs
 
 #    Files
-FILES = main.c game.c \
-		exit_jgour.c
+FILES = main.c check_args.c parsing.c parsing_texture.c exit.c
 
 FILES_TEST = main_test.c game.c \
-		exit_jgour.c print_2d.c texture.c \
-		check_deplacement.c
+		exit_jgour.c texture.c \
+		check_deplacement.c render_3d.c \
+		check_horizon.c check_vertical.c \
+		calc_utils.c
 
 #    Compilation
 NAME = cub3D

@@ -79,9 +79,9 @@ void	ft_affichage_map(t_data *d)
 		while (d->map[i][j] != 0)
 		{
 			if (d->map[i][j])
-				ft_put_img(d, d->w, i * d->size, j * d->size);
+				ft_put_img(d, d->w, j * d->size, i * d->size);
 			if (d->map[i][j] == '0')
-				ft_put_img(d, d->s, i * d->size, j * d->size);
+				ft_put_img(d, d->s, j * d->size, i * d->size);
 			j++;
 		}
 		j = 0;

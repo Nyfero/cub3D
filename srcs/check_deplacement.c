@@ -26,7 +26,7 @@ int	ft_check_radius(float x, float y, float r, t_data *d)
 		{
 			tmp = sqrt(powf(x - i, 2) + powf(y - j, 2));
 			if (tmp <= r)
-				if (ft_check_wall(i, j, d))
+				if (ft_check_wall(j, i, d))
 					return (1);
 			j++;
 		}

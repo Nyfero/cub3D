@@ -4,7 +4,7 @@ void	ft_init_player(t_player *player)
 {	
 	player->xp = 200;
 	player->yp = 200;
-	player->ap = PI/4;
+	player->ap = PI/2;
 	player->dxp = cos(player->ap) * MV;
 	player->dyp = sin(player->ap) * MV;
 }
@@ -43,11 +43,14 @@ int	main(void)
 	d.mlx = mlx_init();
 	if (d.mlx == 0)
 		return (1);
-	tempx = d.h * d.size;
-	tempy = d.l * d.size;
+	tempx = d.l * d.size;
+	tempy = d.h * d.size;
 	printf("temp x = %d\n", tempx);
 	d.win = mlx_new_window(d.mlx, tempx, tempy, "cub3d");
 	if (d.win == 0)
+		exit (1);
+	d.win3d = mlx_new_window(d.mlx, 512, 512, "cub3d");
+	if (d.win3d == 0)
 		exit (1);
 	ft_creation_img(&d);
 	ft_affichage_map(&d);
