@@ -1,51 +1,4 @@
 #include "cub3D.h"
-/*
-void	ft_bordure_propre(t_data d)
-{
-	int	i;
-	int	temp;
-	int	coord;
-
-	temp = -1;
-	i = -1;
-	coord = d.map.h_max * d.t;
-	while (++i < d.map.lg * d.t)
-	{
-		temp = -1;
-		while (++temp < 2)
-			mlx_pixel_put(d.mlx, d.win, i, coord - temp, 0x00FFFFFF);
-	}
-	i = -1;
-	coord = d.map.lg * d.t;
-	while (++i < d.map.h_max * d.t)
-	{
-		temp = -1;
-		while (++temp < 2)
-			mlx_pixel_put(d.mlx, d.win, coord - temp, i, 0x00FFFFFF);
-	}
-}
-
-void	ft_texture(int x, int y, t_data d, int couleur)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < d.t)
-	{
-		while (j < d.t)
-		{
-			if ((i < d.t / 5 || j < d.t / 5) && (i < 2 || j < 2))
-				mlx_pixel_put(d.mlx, d.win, i + x, j + y, 0xFFFFFFFF);
-			else
-				mlx_pixel_put(d.mlx, d.win, i + x, y + j, couleur);
-			j++;
-		}
-		i++;
-		j = 0;
-	}
-}*/
 
 void	ft_put_img(t_data *d, void *image, int x, int y)
 {
@@ -76,11 +29,11 @@ void	ft_affichage_map(t_data *d)
 	j = 0;
 	while (i < d->h)
 	{
-		while (d->map[i][j] != 0)
+		while (d->map.m[i][j] != 0)
 		{
-			if (d->map[i][j])
+			if (d->map.m[i][j])
 				ft_put_img(d, d->w, j * d->size, i * d->size);
-			if (d->map[i][j] == '0')
+			if (d->map.m[i][j] == '0')
 				ft_put_img(d, d->s, j * d->size, i * d->size);
 			j++;
 		}

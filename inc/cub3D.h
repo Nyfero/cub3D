@@ -15,6 +15,7 @@
 # define P2 PI / 2
 # define P3 3 * PI / 2
 # define MV 5
+# define DR 0.0174533
 
 typedef struct	s_imge
 {
@@ -72,6 +73,8 @@ typedef struct s_data
 	void		*w;
 	void		*p;
 	void		*win3d;
+	int			hwin;
+	int			lwin;
 
 }	t_data;
 
@@ -151,10 +154,10 @@ int	ft_check_deplacement_2(t_data *d, t_player *p);
 void	ft_3d_render(t_data *d);
 
 //	check_horizon.c
-float	ft_check_horizontal(t_data *d, t_player *pl);
+float	ft_check_horizontal(t_data *d, t_player *pl, float ra);
 
 //	check_vertical.c
-float	ft_check_vertical(t_data *d, t_player *pl);
+float	ft_check_vertical(t_data *d, t_player *pl, float ra);
 
 //	calc_utils.c
 float	ft_dist(float x, float y, float x2, float y2);
