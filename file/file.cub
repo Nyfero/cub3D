@@ -1,9 +1,9 @@
-NO ../../../../finished/so_long/so_long/img/Grass.xpm
-SO ../../../../finished/so_long/so_long/img/End.xpm
-WE ../../../../finished/so_long/so_long/img/Cookie.xpm
-EA ../../../../finished/so_long/so_long/img/Wall.xpm
+NO ../d_img/wall.xpm
+SO ../d_img/wall.xpm
+WE ../d_img/wall.xpm
+EA ../d_img/wall.xpm
 
-F 220,100,0
+F 
 C 225,30,0
 
         1111111111111111111111111
