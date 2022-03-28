@@ -86,42 +86,67 @@ int	get_texture(t_data *data, char **tab)
 			&data->wall.ea.w, &data->wall.ea.h);
 	}
 	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && !data->wall.cl)
-		data->wall.cl = get_color(tab[1]);
+	{
+		printf("05\n");
+		data->wall.cl = get_color(tab);
+	}
 	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && !data->wall.fl)
-		data->wall.fl = get_color(tab[1]);
+	{
+		printf("06\n");
+		data->wall.fl = get_color(tab);
+	}
 	else
 		return (error_file(5));
 	return (0);
 	
 }
 
-int	len_nbr(int nbr)
+int	get_color(char **line)
 {
-	int	compt;
-
-	compt = 1;
-	while (nbr / 10 > 0)
+	int		i;
+	char	*tmp;
+	
+	i = 0;
+	tmp = NULL;
+	if (ft_lstrlen(line) == 2)
+		return (one_line(line[1]));
+	while (line[++i])
 	{
-		nbr = nbr / 10;
-		compt++;
+		if (!tmp)
+			tmp = ft_strdup(line[i]);
+		else
+			tmp = ft_strjoin_and_free_s1(tmp, line[i]);
 	}
-	return (compt);
+	i = one_line(tmp);
+	free(tmp);
+	return (i);
 }
 
-int	get_color(char *line)
+int	one_line(char *line)
 {
-	int	r;
+	int r;
 	int	g;
 	int	b;
-	int color;
 	int	i;
 	
 	i = 0;
 	r = ft_atoi(line);
 	i += len_nbr(r) + 1;
-	g = ft_atoi(line + i);
+	if (!line[i])
+		return (0 << 24 | r << 16 | 0 << 8 | 0);
+	g = ft_atoi(&line[i]);
 	i += len_nbr(g) + 1;
-	b = ft_atoi(line + i);
-	color = (0 << 24 | r << 16 | g << 8 | b);
-	return (color);
+	if (!line[i])
+		return (0 << 24 | r << 16 | g << 8 | 0);
+	b = ft_atoi(&line[i]);
+	i += len_nbr(b);
+	while (line[i])
+	{
+		if (line[i++] != ' ')
+		{
+			error_file(5);
+			return (-1);
+		}
+	}
+	return (0 << 24 | r << 16 | g << 8 | b);
 }

@@ -11,7 +11,7 @@ int	parsing(t_data *data, char *file)
 		free_img(data);
 		return (error_file(6));
 	}*/
-	print_texture(data);
+	//print_texture(data);
 	if (parse_map(data, file))
 		return (1);
 	return (0);
@@ -73,4 +73,17 @@ int	init_player(t_data *data)
 	data->pl->dyp = 0;
 	data->pl->ap = 0;
 	return (0);
+}
+
+int	len_nbr(int nbr)
+{
+	int	compt;
+
+	compt = 1;
+	while (nbr / 10 > 0)
+	{
+		nbr = nbr / 10;
+		compt++;
+	}
+	return (compt);
 }

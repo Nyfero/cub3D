@@ -107,13 +107,14 @@ int		parsing(t_data *data, char *file);
 void	init_wall(t_data *data);
 int		init_map(t_data *data);
 int		init_player(t_data *data);
+int		len_nbr(int nbr);
 
 //	parsing_texture.c
 int		parse_wall(t_data *data, char *file);
 int		parse_texture(t_data *data, char *line);
 int		get_texture(t_data *data, char ** tab);
-int		len_nbr(int nbr);
-int		get_color(char *line);
+int		get_color(char **line);
+int		one_line(char *line);
 
 //	parsing_map.c
 int		parse_map(t_data *data, char *file);

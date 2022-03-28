@@ -10,14 +10,14 @@ int	parse_map(t_data *data, char *file)
 	if (init_map(data))
 		return (1);
 	get_map(data, file);
-	print_map(data);
+	//print_map(data);
 	if (check_map_closed(data))
 		return (1);
 	if (init_player(data))
 		return (1);
 	if (get_player_info(data))
 		return (1);
-	print_player(data);
+	//print_player(data);
 	return (0);
 }
 
