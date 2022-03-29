@@ -31,36 +31,36 @@ void	ft_check_vertical_next(t_check *v, int	*dof)
 }
 
 
-float	ft_check_vertical(t_data *d, t_player *pl, float ra)
+float	ft_check_vertical(t_data *d, t_player *pl, float ra, t_check *v)
 {
 	int		mx;
 	int		my;
 	int		dof;
-	t_check	v;
+//	t_check	v;
 
 	dof = 0;
 	if (ra < P2 || ra > P3)//looking left
-		ft_check_vertical_left(d, pl, &v, ra);
+		ft_check_vertical_left(d, pl, v, ra);
 	if (ra > P2 && ra < P3)//looking right
-		ft_check_vertical_right(d, pl, &v, ra);
+		ft_check_vertical_right(d, pl, v, ra);
 	if (!ra || ra == PI)//looking up / down
-		ft_check_vertical_up_down(d, pl, &v, &dof);
+		ft_check_vertical_up_down(d, pl, v, &dof);
 	while (dof < d->l)
 	{
-		mx = (int)v.rx / d->size;		//pos x de la map
-		my = (int)v.ry / d->size;		//pos y de la map
+		mx = (int)v->rx / d->size;		//pos x de la map
+		my = (int)v->ry / d->size;		//pos y de la map
 		if ((my >= 0 && mx >= 0 && my < d->h && mx < d->l) && d->map.m[my][mx] == '1')	//wall hit
 		{
 			// printf("map[%d][%d] estun wall\n", mx, my);
 			for (int test = 16; test< 32; test++)
 			   	for (int test2 = 16; test2< 32; test2++)
 			   		mlx_pixel_put(d->mlx, d->win, mx *64 + test, my * 64 + test2, 0xFF0000);
-			return (ft_dist(pl->xp, pl->yp, v.rx, v.ry));
+			return (ft_dist(pl->xp, pl->yp, v->rx, v->ry));
 		}
 		else if (my < 0 || my < 0 || my > d->h || mx > d->l)
 			dof = d->l;
 		else	//next line
-			ft_check_vertical_next(&v, &dof);
+			ft_check_vertical_next(v, &dof);
 	}
 	return (-1);
 }

@@ -144,10 +144,10 @@ int	ft_check_deplacement_2(t_data *d, t_player *p);
 void	ft_3d_render(t_data *d);
 
 //	check_horizon.c
-float	ft_check_horizontal(t_data *d, t_player *pl, float ra);
+float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v);
 
 //	check_vertical.c
-float	ft_check_vertical(t_data *d, t_player *pl, float ra);
+float	ft_check_vertical(t_data *d, t_player *pl, float ra, t_check *v);
 
 //	calc_utils.c
 float	ft_dist(float x, float y, float x2, float y2);

@@ -30,35 +30,35 @@ void	ft_check_horizontal_next(t_check *v, int *dof)
 	*dof = *dof + 1;
 }
 
-float	ft_check_horizontal(t_data *d, t_player *pl, float ra)
+float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v)
 {
 	int		mx;
 	int		my;
 	int		dof;
-	t_check	v;
+	//t_check	v;
 
 	dof = 0;
 	if (ra < PI)//looking up
-		ft_check_horizontal_up(d, pl, &v, ra);
+		ft_check_horizontal_up(d, pl, v, ra);
 	if (ra > PI)//looking down
-		ft_check_horizontal_down(d, pl, &v, ra);
+		ft_check_horizontal_down(d, pl, v, ra);
 	if (!ra || ra == PI)
-		ft_check_horizontal_l_r(d, pl, &v, &dof);
+		ft_check_horizontal_l_r(d, pl, v, &dof);
 	while (dof < d->h)
 	{
-		mx = (int)v.rx / d->size;		//pos x de la map
-		my = (int)v.ry / d->size;		//pos y de la map
+		mx = (int)v->rx / d->size;		//pos x de la map
+		my = (int)v->ry / d->size;		//pos y de la map
 		if ((my >= 0 && mx >= 0 && my < d->h && mx < d->l) && d->map.m[my][mx] == '1')	//wall hit
 		{
 			for (int test = 0; test< 64; test++)
 				for (int test2 = 0; test2< 64; test2++)
 					mlx_pixel_put(d->mlx, d->win, mx *64 + test, my * 64 + test2, 0x5B034F);
-			return (ft_dist(pl->xp, pl->yp, v.rx, v.ry));
+			return (ft_dist(pl->xp, pl->yp, v->rx, v->ry));
 		}
 		else if (my < 0 ||my < 0 || my > d->h || mx > d->l)
 			dof = d->h;
 		else		//next line
-			ft_check_horizontal_next(&v, &dof);
+			ft_check_horizontal_next(v, &dof);
 	}
 	return (-1);
 }
