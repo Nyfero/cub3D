@@ -1,5 +1,18 @@
 #include "cub3D.h"
 
+void	ft_init_img(t_wall *w, t_data *d)
+{
+	int	i;
+
+	w->size = 64;
+	i = 64;
+	w->no = mlx_xpm_file_to_image(d->mlx, "./d_img/north.xpm", &i, &i);
+	w->so = mlx_xpm_file_to_image(d->mlx, "./d_img/south.xpm", &i, &i);
+	w->ea = mlx_xpm_file_to_image(d->mlx, "./d_img/east.xpm", &i, &i);
+	w->we = mlx_xpm_file_to_image(d->mlx, "./d_img/weast.xpm", &i, &i);
+
+}
+
 void	ft_init_player(t_player *player)
 {	
 	player->xp = 200;
@@ -12,6 +25,7 @@ void	ft_init_player(t_player *player)
 int	main(void)
 {
 	t_data		d;
+	t_wall		w;
 	t_player	p;
 	int			i;
 	int			tempx;
@@ -43,6 +57,8 @@ int	main(void)
 	d.mlx = mlx_init();
 	if (d.mlx == 0)
 		return (1);
+	ft_init_img(&w, &d);
+	d.wall = w;
 	tempx = d.l * d.size;
 	tempy = d.h * d.size;
 	printf("temp x = %d\n", tempx);
