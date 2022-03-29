@@ -2,7 +2,8 @@
 
 int	parse_map(t_data *data, char *file)
 {
-	get_size_map(data, file);
+	if (get_size_map(data, file))
+		return (1);
 	if (data->map.x <= 2 || data->map.y <= 2)
 		return (error_file(7));
 	if (data->map.x > 500 || data->map.y > 500)

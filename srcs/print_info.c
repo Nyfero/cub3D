@@ -29,3 +29,15 @@ void	print_player(t_data *data)
 	printf("player rotation:%f\n", data->pl->ap);
 	printf("\t---END INFO PLAYER---\n");
 }
+
+void	print_texture(t_data *data)
+{
+	printf("\n\t---INFO TEXTURE---\n");
+	printf("Wall NO:%p\n", data->wall.no.img);
+	printf("Wall SO:%p\n", data->wall.so.img);
+	printf("Wall WE:%p\n", data->wall.we.img);
+	printf("Wall EA:%p\n\n", data->wall.ea.img);
+	printf("Floor:%d\n", data->wall.fl);
+	printf("Celling:%d\n", data->wall.cl);
+	printf("\t---END INFO TEXTURE---\n");
+}

@@ -9,6 +9,7 @@
 # include <fcntl.h>
 # include "../libft/inc/libft.h"
 # include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
 
 # define PI 3.1415926535
 # define P2 PI / 2
@@ -16,12 +17,19 @@
 # define MV 5
 # define DR 0.0174533
 
+typedef struct	s_imge
+{
+	void	*img;
+	int		w;
+	int		h;
+}	t_imge;
+
 typedef struct s_wall
 {
-	void			*no;
-	void			*so;
-	void			*we;
-	void			*ea;
+	t_imge			no;
+	t_imge			so;
+	t_imge			we;
+	t_imge			ea;
 	int				size;
 
 	int				fl;
@@ -78,9 +86,14 @@ typedef struct s_check
 	float	yo;
 }	t_check;
 
+int		end_cub3d(t_data *data);
+int		mouse_hook(int mouse, t_data *data);
+void	init_mouse(t_data *data);
+
 //	print_info.c
 void	print_map(t_data *data);
 void	print_player(t_data *data);
+void	print_texture(t_data *data);
 
 //	check_args.c
 int		check_args(int argc, char **argv);
@@ -98,12 +111,14 @@ int		parsing(t_data *data, char *file);
 void	init_wall(t_data *data);
 int		init_map(t_data *data);
 int		init_player(t_data *data);
+int		len_nbr(int nbr);
 
 //	parsing_texture.c
 int		parse_wall(t_data *data, char *file);
 int		parse_texture(t_data *data, char *line);
 int		get_texture(t_data *data, char ** tab);
-int		get_color(char *line);
+int		get_color(char **line);
+int		one_line(char *line);
 
 //	parsing_map.c
 int		parse_map(t_data *data, char *file);
