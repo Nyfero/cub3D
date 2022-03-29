@@ -11,7 +11,7 @@ int	parsing(t_data *data, char *file)
 		free_img(data);
 		return (error_file(6));
 	}*/
-	//print_texture(data);
+	print_texture(data);
 	if (parse_map(data, file))
 		return (1);
 	return (0);

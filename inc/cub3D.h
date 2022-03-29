@@ -86,6 +86,10 @@ typedef struct s_check
 	float	yo;
 }	t_check;
 
+int		end_cub3d(t_data *data);
+int		mouse_hook(int mouse, t_data *data);
+void	init_mouse(t_data *data);
+
 //	print_info.c
 void	print_map(t_data *data);
 void	print_player(t_data *data);

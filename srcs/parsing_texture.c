@@ -31,8 +31,10 @@ int	parse_wall(t_data *data, char *file)
 int	parse_texture(t_data *data, char *line)
 {
 	char	**tab;
+	int		ret;
 
 	tab = NULL;
+	ret = 0;
 	if (line)
 		tab = ft_split(line, ' ');
 	if (!tab)
@@ -46,17 +48,11 @@ int	parse_texture(t_data *data, char *line)
 		return (0);
 	}
 	if (!tab[1])
-	{
-		ft_free_ls(tab);
-		return (error_file(5));
-	}
-	if (get_texture(data, tab))
-	{
-		ft_free_ls(tab);
-		return (1);
-	}
+		ret = error_file(5);
+	if (ret == 0 && get_texture(data, tab))
+		ret = 1;
 	ft_free_ls(tab);
-	return (0);
+	return (ret);
 }
 
 int	get_texture(t_data *data, char **tab)
