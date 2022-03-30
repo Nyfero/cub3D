@@ -14,7 +14,7 @@ void	ft_rotation(int nb, t_player *p)
 		if (p->ap > 2 * PI)
 			p->ap -= 2 * PI;
 	}
-	printf("ra = %f\n", p->ap);
+	// printf("ra = %f\n", p->ap);
 	p->dxp = (cos(p->ap) * MV);
 	p->dyp = (sin(p->ap) * MV);
 }
@@ -98,9 +98,10 @@ int	ft_game_event(int keycode, t_data *d)
 int	ft_game(t_data d)
 {
 	//ft_aff_2d(d);
-	mlx_hook(d.win, 02, (1L<<0), ft_game_event, &d);
+	mlx_hook(d.win3d, 02, (1L<<0), ft_game_event, &d);
+	init_mouse(&d);
 	//mlx_key_hook(d.win, ft_game_event, &d);
-	mlx_hook(d.win, 33, 1L << 5, cub3d_exit, &d);//exit croix
+	mlx_hook(d.win3d, 33, 1L << 5, cub3d_exit, &d);//exit croix
 	mlx_loop(d.mlx);
 	return (0);
 }

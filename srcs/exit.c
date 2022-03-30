@@ -11,12 +11,12 @@ void	exit_before_exec(t_data *data)
 
 void	free_img(t_data *data)
 {
-	if (data->wall.no.img)
-		mlx_destroy_image(data->mlx, data->wall.no.img);
-	if (data->wall.so.img)
-		mlx_destroy_image(data->mlx, data->wall.so.img);
-	if (data->wall.we.img)
-		mlx_destroy_image(data->mlx, data->wall.we.img);
-	if (data->wall.ea.img)
-		mlx_destroy_image(data->mlx, data->wall.ea.img);
+	if (data->wall.no)
+		mlx_destroy_image(data->mlx, data->wall.no);
+	if (data->wall.so)
+		mlx_destroy_image(data->mlx, data->wall.so);
+	if (data->wall.we)
+		mlx_destroy_image(data->mlx, data->wall.we);
+	if (data->wall.ea)
+		mlx_destroy_image(data->mlx, data->wall.ea);
 }

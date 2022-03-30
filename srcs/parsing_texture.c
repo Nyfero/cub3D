@@ -57,40 +57,22 @@ int	parse_texture(t_data *data, char *line)
 
 int	get_texture(t_data *data, char **tab)
 {
-	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0]))/* && !data->wall.no.i*/)
-	{
-		printf("01\n");
-		data->wall.no.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->wall.no.w, &data->wall.no.h);
-	}
-	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0]))/* && !data->wall.so.i*/)
-	{
-		printf("02\n");
-		data->wall.so.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->wall.so.w, &data->wall.so.h);
-	}
-	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0]))/* && !data->wall.we.i*/)
-	{
-		printf("03\n");
-		data->wall.we.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->wall.we.w, &data->wall.we.h);
-	}
-	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0]))/* && !data->wall.ea.i*/)
-	{
-		printf("04\n");
-		data->wall.ea.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-			&data->wall.ea.w, &data->wall.ea.h);
-	}
+	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0])) && !data->wall.no)
+		data->wall.no = mlx_xpm_file_to_image(data->mlx, tab[1],
+				&data->size, &data->size);
+	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0])) && !data->wall.so)
+		data->wall.so = mlx_xpm_file_to_image(data->mlx, tab[1],
+				&data->size, &data->size);
+	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0])) && !data->wall.we)
+		data->wall.we = mlx_xpm_file_to_image(data->mlx, tab[1],
+				&data->size, &data->size);
+	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !data->wall.ea)
+		data->wall.ea = mlx_xpm_file_to_image(data->mlx, tab[1],
+			&data->size, &data->size);
 	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && !data->wall.cl)
-	{
-		printf("05\n");
 		data->wall.cl = get_color(tab);
-	}
 	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && !data->wall.fl)
-	{
-		printf("06\n");
 		data->wall.fl = get_color(tab);
-	}
 	else
 		return (error_file(5));
 	return (0);

@@ -26,11 +26,10 @@ typedef struct	s_imge
 
 typedef struct s_wall
 {
-	t_imge			no;
-	t_imge			so;
-	t_imge			we;
-	t_imge			ea;
-	int				size;
+	void			*no;
+	void			*so;
+	void			*we;
+	void			*ea;
 
 	int				fl;
 	int				cl;
@@ -147,6 +146,7 @@ void	ft_creation_img(t_data *d);
 
 //	game.c
 int	ft_game(t_data d);
+void	ft_rotation(int nb, t_player *p);
 
 //	exit_jgour.c
 int	cub3d_exit(t_data *d);

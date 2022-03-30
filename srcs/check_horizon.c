@@ -52,7 +52,7 @@ float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v)
 		{
 			for (int test = 0; test< 64; test++)
 				for (int test2 = 0; test2< 64; test2++)
-					mlx_pixel_put(d->mlx, d->win, mx *64 + test, my * 64 + test2, 0x5B034F);
+					mlx_pixel_put(d->mlx, d->win, mx * d->size + test, my * d->size + test2, 0x5B034F);
 			return (ft_dist(pl->xp, pl->yp, v->rx, v->ry));
 		}
 		else if (my < 0 ||my < 0 || my > d->h || mx > d->l)

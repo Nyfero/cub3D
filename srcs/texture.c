@@ -2,6 +2,7 @@
 
 void	ft_put_img(t_data *d, void *image, int x, int y)
 {
+	
 	mlx_put_image_to_window(d->mlx, d->win, image, x, y);
 }
 
@@ -27,14 +28,19 @@ void	ft_affichage_map(t_data *d)
 
 	i = 0;
 	j = 0;
-	while (i < d->h)
+	while (d->map.m[i])
 	{
+		
 		while (d->map.m[i][j] != 0)
 		{
 			if (d->map.m[i][j])
+			{
 				ft_put_img(d, d->w, j * d->size, i * d->size);
-			if (d->map.m[i][j] == '0')
+			}
+			if (d->map.m[i][j] == '0' || d->map.m[i][j] == 'S' || d->map.m[i][j] == 'N')
+			{
 				ft_put_img(d, d->s, j * d->size, i * d->size);
+			}
 			j++;
 		}
 		j = 0;

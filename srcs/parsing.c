@@ -5,12 +5,12 @@ int	parsing(t_data *data, char *file)
 	init_wall(data);
 	if (parse_wall(data, file))
 		return (1);
-	/*printf("NO:%p\nSO:%p\nWE:%p\nEA:%p\n", data->wall.no.i ,data->wall.so.i ,data->wall.we.i ,data->wall.ea.i);
-	if (!data->wall.no.i || !data->wall.so.i || !data->wall.we.i || !data->wall.ea.i)
+	if (!data->wall.no || !data->wall.so || !data->wall.we || !data->wall.ea
+		|| data->wall.fl == -1 || data->wall.cl == -1)
 	{
 		free_img(data);
 		return (error_file(6));
-	}*/
+	}
 	print_texture(data);
 	if (parse_map(data, file))
 		return (1);
@@ -19,12 +19,11 @@ int	parsing(t_data *data, char *file)
 
 void	init_wall(t_data *data)
 {
-	data->wall.no.img = NULL;
-	data->wall.so.img = NULL;
-	data->wall.we.img = NULL;
-	data->wall.ea.img = NULL;
+	data->wall.no = NULL;
+	data->wall.so = NULL;
+	data->wall.we = NULL;
+	data->wall.ea = NULL;
 	data->map.m = 0;
-	data->wall.size = 64;
 	data->wall.fl = 0;
 	data->wall.cl = 0;
 	data->wall.next = NULL;

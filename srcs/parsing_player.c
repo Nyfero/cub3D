@@ -32,8 +32,8 @@ int	place_player(t_data *data, int i, int j)
 		data->pl->ap = 3.1415926535;
 	else
 		return (error_file(10));
-	data->pl->xp = j * data->size;
-	data->pl->yp = i * data->size;
+	data->pl->xp = j * data->size + data->size / 2;
+	data->pl->yp = i * data->size + data->size / 2;
 	data->pl->dxp = (cos(data->pl->ap) * MV);
 	data->pl->dyp = (sin(data->pl->ap) * MV);
 	return (0);

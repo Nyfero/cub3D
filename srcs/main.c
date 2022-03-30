@@ -14,10 +14,15 @@ int	main(int argc, char **argv)
 		exit_before_exec(&data);
 		return (3);
 	}
-	data.win = mlx_new_window(data.mlx, 1920, 1080, "cub3D");
-	init_mouse(&data);
-	mlx_hook(data.win, 33, 1L << 5, end_cub3d, &data);
-	mlx_loop(data.mlx);
+	data.l = data.map.x;
+	data.h = data.map.y;
+	data.win = mlx_new_window(data.mlx, data.map.x * data.size, data.map.y * data.size, "cub3D");
+	data.hwin = 700;
+	data.lwin = 700;
+	data.win3d = mlx_new_window(data.mlx, 700, 700, "cub3D");
+	/*ft_creation_img(&data);
+	ft_affichage_map(&data);*/
+	ft_game(data);
 	free_img(&data);
 	ft_free_ls(data.map.m);
 	mlx_destroy_display(data.mlx);
@@ -27,15 +32,22 @@ int	main(int argc, char **argv)
 
 void	init_mouse(t_data *data)
 {
-	mlx_hook(data->win, 6, 1L << 6, &mouse_hook, data);
-	mlx_mouse_hide(data->mlx, data->win);
-	mlx_mouse_move(data->mlx, data->win, 1920 * 0.5, 1080 * 0.5);
+	mlx_hook(data->win3d, 6, 1L << 6, &mouse_hook, data);
+	mlx_mouse_hide(data->mlx, data->win3d);
+	mlx_mouse_move(data->mlx, data->win3d, 700 * 0.5, 700 * 0.5);
 }
 
 int	mouse_hook(int mouse, t_data *data)
 {
-	printf("key:%d\n", mouse);
+	(void)mouse;
 	(void)data;
+	/*if (mouse >=0 && mouse <= 200)
+		ft_rotation(1, data->pl);
+	else if (mouse >= 500 && mouse <= 700)
+		ft_rotation(0, data->pl);*/
+	//mlx_mouse_move(data->mlx, data->win3d, 700 * 0.5, 700 * 0.5);
+	/*ft_affichage_map(data);
+	ft_3d_render(data);*/
 	return (0);
 }
 
