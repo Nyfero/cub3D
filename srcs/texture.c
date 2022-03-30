@@ -12,7 +12,7 @@ void	ft_creation_img(t_data *d)
 	int	jt;
 
 	jt = 5;
-	i = d->size;
+	i = 32;
 	printf("i = %d\n", i);
 	d->s = mlx_xpm_file_to_image(d->mlx, "./d_img/floor.xpm", &i, &i);
 	d->w = mlx_xpm_file_to_image(d->mlx, "./d_img/wall.xpm", &i, &i);
@@ -34,13 +34,9 @@ void	ft_affichage_map(t_data *d)
 		while (d->map.m[i][j] != 0)
 		{
 			if (d->map.m[i][j])
-			{
-				ft_put_img(d, d->w, j * d->size, i * d->size);
-			}
-			if (d->map.m[i][j] == '0' || d->map.m[i][j] == 'S' || d->map.m[i][j] == 'N')
-			{
-				ft_put_img(d, d->s, j * d->size, i * d->size);
-			}
+				ft_put_img(d, d->w, j * 32, i * 32);
+			if (d->map.m[i][j] == '0')
+				ft_put_img(d, d->s, j * 32, i * 32);
 			j++;
 		}
 		j = 0;
@@ -48,6 +44,6 @@ void	ft_affichage_map(t_data *d)
 	//	printf("line j = %d size = %d\n", j, d->size);
 	}
 	//ft_put_img(d, d->p, (d->pl->xp * 5) - 2, (d->pl->yp  * 5) - 2);
-	ft_put_img(d, d->p, d->pl->xp - 2, d->pl->yp - 2);
+	ft_put_img(d, d->p, d->pl->xp * -2 - 2, d->pl->yp * -2 - 2);
 	//printf("end\n");
 }

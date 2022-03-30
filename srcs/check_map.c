@@ -17,18 +17,18 @@ int	check_left(t_data *data)
 	int	j;
 
 	i = 0;
-	while (data->map.m[++i])
+	while (data->map[++i])
 	{
 		j = 0;
-		while (data->map.m[i][j] == ' ' || data->map.m[i][j] == '1')
+		while (data->map[i][j] == ' ' || data->map[i][j] == '1')
 			j++;
-		if (data->map.m[i][j] && data->map.m[i][j] == '0')
+		if (data->map[i][j] && data->map[i][j] == '0')
 		{
-			if (j == 0 || j == data->map.x - 1)
+			if (j == 0 || j == data->l - 1)
 				return (error_file(9));
-			if (i < data->map.y - 1)
-				if (!data->map.m[i - 1][j] || !data->map.m[i + 1][j]
-						|| !data->map.m[i][j + 1])
+			if (i < data->h - 1)
+				if (!data->map[i - 1][j] || !data->map[i + 1][j]
+						|| !data->map[i][j + 1])
 					return (error_file(9));
 		}
 	}
@@ -41,20 +41,20 @@ int	check_right(t_data *data)
 	int	j;
 
 	i = 0;
-	while (data->map.m[++i])
+	while (data->map[++i])
 	{
 		j = 0;
-		if (i < data->map.y - 1)
+		if (i < data->h - 1)
 		{
-			while (data->map.m[i][j])
+			while (data->map[i][j])
 				j++;
 			j--;
-			while (data->map.m[i][j] != '0' && j > 0)
+			while (data->map[i][j] != '0' && j > 0)
 				j--;
-			if (data->map.m[i][j] == '0')
+			if (data->map[i][j] == '0')
 			{
-				if (!data->map.m[i - 1][j] || !data->map.m[i + 1][j]
-						|| j == data->map.x)
+				if (!data->map[i - 1][j] || !data->map[i + 1][j]
+						|| j == data->l)
 					return (error_file(9));
 			}
 		}
@@ -68,25 +68,38 @@ int	check_top_and_bot(t_data *data)
 	int	j;
 
 	i = -1;
-	while (data->map.m[0][++i])
-		if (data->map.m[0][i] != '1' && data->map.m[0][i] != ' ')
+	while (data->map[0][++i])
+		if (data->map[0][i] != '1' && data->map[0][i] != ' ')
 			return (error_file(9));
-	while (i < data->map.x)
+	while (i < data->l)
 	{
-		if (data->map.m[1][i] && data->map.m[1][i] == '0')
+		if (data->map[1][i] && data->map[1][i] == '0')
 			return (error_file(9));
 		i++;
 	}
 	j = -1;
-	i = data->map.y - 1;
-	while (data->map.m[i][++j])
-		if (data->map.m[i][j] != '1' && data->map.m[i][j] != ' ')
+	i = data->h - 1;
+	while (data->map[i][++j])
+		if (data->map[i][j] != '1' && data->map[i][j] != ' ')
 			return (error_file(9));
-	while (j < data->map.x)
+	while (j < data->l)
 	{
-		if (data->map.m[i - 1][j] && data->map.m[i - 1][j] == '0')
+		if (data->map[i - 1][j] && data->map[i - 1][j] == '0')
 			return (error_file(9));
 		j++;
 	}
 	return (0);
+}
+
+int	len_nbr(int nbr)
+{
+	int	compt;
+
+	compt = 1;
+	while (nbr / 10 > 0)
+	{
+		nbr = nbr / 10;
+		compt++;
+	}
+	return (compt);
 }

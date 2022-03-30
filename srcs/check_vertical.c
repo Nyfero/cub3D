@@ -54,7 +54,7 @@ float	ft_check_vertical(t_data *d, t_player *pl, float ra, t_check *v)
 			// printf("map[%d][%d] estun wall\n", mx, my);
 			for (int test = 16; test< 32; test++)
 			   	for (int test2 = 16; test2< 32; test2++)
-			   		mlx_pixel_put(d->mlx, d->win, mx *d->size + test, my * d->size + test2, 0xFF0000);
+			   		mlx_pixel_put(d->mlx, d->win, mx * d->size + test, my * d->size + test2, 0xFF0000);
 			return (ft_dist(pl->xp, pl->yp, v->rx, v->ry));
 		}
 		else if (my < 0 || my < 0 || my > d->h || mx > d->l)

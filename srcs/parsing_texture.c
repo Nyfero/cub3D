@@ -57,21 +57,21 @@ int	parse_texture(t_data *data, char *line)
 
 int	get_texture(t_data *data, char **tab)
 {
-	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0])) && !data->wall.no)
-		data->wall.no = mlx_xpm_file_to_image(data->mlx, tab[1],
+	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0])) && !data->wall.no.img)
+		data->wall.no.img = mlx_xpm_file_to_image(data->mlx, tab[1],
 				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0])) && !data->wall.so)
-		data->wall.so = mlx_xpm_file_to_image(data->mlx, tab[1],
+	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0])) && !data->wall.so.img)
+		data->wall.so.img = mlx_xpm_file_to_image(data->mlx, tab[1],
 				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0])) && !data->wall.we)
-		data->wall.we = mlx_xpm_file_to_image(data->mlx, tab[1],
+	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0])) && !data->wall.we.img)
+		data->wall.we.img = mlx_xpm_file_to_image(data->mlx, tab[1],
 				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !data->wall.ea)
-		data->wall.ea = mlx_xpm_file_to_image(data->mlx, tab[1],
+	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !data->wall.ea.img)
+		data->wall.ea.img = mlx_xpm_file_to_image(data->mlx, tab[1],
 			&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && !data->wall.cl)
+	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && data->wall.cl == -1)
 		data->wall.cl = get_color(tab);
-	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && !data->wall.fl)
+	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && data->wall.fl == -1)
 		data->wall.fl = get_color(tab);
 	else
 		return (error_file(5));
@@ -123,7 +123,7 @@ int	one_line(char *line)
 		if (line[i++] != ' ')
 		{
 			error_file(5);
-			return (-1);
+			return (-2);
 		}
 	}
 	return (0 << 24 | r << 16 | g << 8 | b);

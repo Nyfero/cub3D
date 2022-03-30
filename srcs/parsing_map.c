@@ -4,9 +4,9 @@ int	parse_map(t_data *data, char *file)
 {
 	if (get_size_map(data, file))
 		return (1);
-	if (data->map.x <= 2 || data->map.y <= 2)
+	if (data->l <= 2 || data->h <= 2)
 		return (error_file(7));
-	if (data->map.x > 500 || data->map.y > 500)
+	if (data->l > 500 || data->h > 500)
 		return (error_file(11));
 	if (init_map(data))
 		return (1);
@@ -33,11 +33,11 @@ int	get_size_map(t_data *data, char *file)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (line[0] || data->map.y)
+		if (line[0] || data->h)
 		{
 			if (is_part_of_map(data, line))
-				data->map.y++;
-			else if (data->map.y)
+				data->h++;
+			else if (data->h)
 			{
 				free(line);
 				close(fd);
@@ -67,8 +67,8 @@ int	is_part_of_map(t_data *data, char *line)
 		else
 			return (0);
 	}
-	if (tmp > data->map.x)
-		data->map.x = tmp;
+	if (tmp > data->l)
+		data->l = tmp;
 	return (1);
 }
 
@@ -102,8 +102,8 @@ void	fill_map(t_data *data, char *line, int i, int j)
 	while (line[++j])
 	{
 		if (line[j] == ' ')
-			data->map.m[i][j] = '1';
+			data->map[i][j] = '1';
 		else
-			data->map.m[i][j] = line[j];
+			data->map[i][j] = line[j];
 	}
 }

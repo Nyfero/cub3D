@@ -27,14 +27,13 @@ void	ft_3d_draw(t_data *d, float dist, int r, unsigned int *img, int color, t_ch
 	//	printf("%d * %d / %.3f = %.3f lineo=%.3f\n", d->hwin, d->size, dist, line_h, line_o);
 
 	float	ty = ty_off * ty_step;
-	//printf("rx=%.3f\n", v->rx);
-	float	tx = (int) (v->ry) / 1 % d->size;
-	//printf("r = %d || ra=%.3f\n", r , ra);
-//	if (ra > PI)
-//	{
+	//printf("rx=%.3f\n", v->rx);s
+	float	tx = (int) (v->rx) / 1 % d->size;
+	if (ra > PI)
+	{
 		//printf("r = %d || ra=%.3f\n", r , ra);
-	//	printf//tx = d->size - 1 - tx;
-//	}
+		//	printf//tx = d->size - 1 - tx;
+	}
 	(void)img;
 	(void) color;
 	(void)ra;
@@ -55,17 +54,17 @@ void	ft_3d_draw(t_data *d, float dist, int r, unsigned int *img, int color, t_ch
 	{
 
 		//float c = img[((int)ty) * 64]; //trouver position pixel
-		while (k < 12)
+		while (k < 1)
 		{
 			//printf("ty=%d |tystep=%.3f | ty*64=%d| line_h=%f\n", ty, ty_step, (int)ty*64, line_h);
-			if (y < line_o)//non wall
-				mlx_pixel_put(d->mlx, d->win3d, r * 12 + k, y, 0x48FF50);//vert plafond
+			if (y < line_o)//non wall*/
+				mlx_pixel_put(d->mlx, d->win3d, r * 1 + k, y, 0x48FF50);//vert plafond
 		//	else if (i > line_o && i < line_o + line_h)
 		//		mlx_pixel_put(d->mlx, d->win3d, r * 12 + k, i, color);//rose wall
 			else if (y > line_o && y < line_o + line_h)
 			{		
 				//if (k == 0)printf("ty=%d |tystep=%.3f | ty*64=%d| line_h=%f\n", ty, ty_step, (int)ty*64, line_h);
-				mlx_pixel_put(d->mlx, d->win3d, r * 12 + k, y, img[(int)ty * 64 + (int) tx]);//rose wall
+				mlx_pixel_put(d->mlx, d->win3d, r * 1 + k, y, img[(int)ty * d->size + (int) tx]);//rose wall
 				if (k == 0)
 				{
 				//	printf("pixel[%.3f] =%X\n", ty, img[(int)ty * 64]);
@@ -73,12 +72,12 @@ void	ft_3d_draw(t_data *d, float dist, int r, unsigned int *img, int color, t_ch
 				}
 			}
 			else
-				mlx_pixel_put(d->mlx, d->win3d, r * 12 + k, y, 0xFF0000);//rouge sol
+				mlx_pixel_put(d->mlx, d->win3d, r * 1 + k, y, 0xFF0000);//rouge sol
 			k++;
 		}
 	//	ty += ty_step;
-		k = 0;
-		y++;
+	k = 0;
+	y++;
 	}
 }
 
@@ -92,7 +91,7 @@ unsigned int	*ft_test_img(t_data *d)
 	
 //	printf("t_int = %lu\n", sizeof(int));
 //	printf("addre=%p | pixe=%d | sline=%d | endian=%d\n", addr, pixe, sline, endian);
-	addr = mlx_get_data_addr(d->wall.so, &pixe, &sline, &endian);
+	addr = mlx_get_data_addr(d->wall.no.img, &pixe, &sline, &endian);
 	//printf("addre=%p | pixe=%d | sline=%d | endian=%d\n", addr, pixe, sline, endian);
 	
 	int y = 0; //y i
@@ -114,28 +113,36 @@ unsigned int	*ft_test_img(t_data *d)
 	return (addr_int);
 }
 
+void	ft_3d_after_dist(t_data *d)
+{
+	float disth;
+	float distv;
+	t_check vh;
+	t_check vv;
+	float ca;
+}
+
 void	ft_3d_render(t_data *d)
 {
-	float	disth;
-	float	distv;
+//	float	disth;
+//	float	distv;
 	float	ra;
-	float	ca;
-	t_check	v1;
-	t_check	v2;
+//	float	ca;
+//	t_check	v1;
+//	t_check	v2;
 	int	r;
 
 	unsigned int	*color;
 
 	color = ft_test_img(d);
 	
-	distv = -1;
 	ra = d->pl->ap - DR * 30;
 	if (ra < 0)
 		ra += 2 * PI;
 	if (ra > 2 * PI)
 		ra -= 2 * PI;
 	r = 0;
-	while (r < 60)
+	while (r < 720)
 	{
 		ca = d->pl->ap - ra;
 		if (ca < 0)
@@ -153,11 +160,19 @@ void	ft_3d_render(t_data *d)
 		}
 		else if (distv < 0)
 		{
+			if (ra > PI)
+			{
+				tx = d->size - 1 - tx;
+			}
 			ft_3d_draw(d, disth * cos(ca), r, color, 0xE341D4, &v1, ra);//0xE341D4
 		//	printf("dist final = %f\n",disth);
 		}
 		else if (distv > disth)
 		{
+			if (ra > PI)
+			{
+				tx = d->size - 1 - tx;
+			}
 			ft_3d_draw(d, disth * cos(ca), r, color, 0xE341D4, &v1, ra);//0xE341D4
 		//	printf("dist final = %f\n",disth);
 		}
@@ -166,7 +181,7 @@ void	ft_3d_render(t_data *d)
 			ft_3d_draw(d, distv * cos(ca), r, color, 0xFF48EE, &v2, ra);//0xFF48EE
 		//	printf("dist final = %f\n",distv);
 		}
-		ra = ra + DR;
+		ra = ra + DR / 12;
 		if (ra < 0)
 			ra += 2 * PI;
 		if (ra > 2 * PI)

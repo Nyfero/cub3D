@@ -14,19 +14,18 @@ int	main(int argc, char **argv)
 		exit_before_exec(&data);
 		return (3);
 	}
-	data.l = data.map.x;
-	data.h = data.map.y;
-	data.win = mlx_new_window(data.mlx, data.map.x * data.size, data.map.y * data.size, "cub3D");
-	data.hwin = 700;
-	data.lwin = 700;
-	data.win3d = mlx_new_window(data.mlx, 700, 700, "cub3D");
+	printf("EXIT\n");
+	exit_before_exec(&data);
+	/*data.win = mlx_new_window(data.mlx, data.h * data.size, data.l * data.size, "map_cub3D");
+	data.size_screen = 720;
+	data.win3d = mlx_new_window(data.mlx, data.size_screen, data.size_screen, "cub3D");*/
 	/*ft_creation_img(&data);
 	ft_affichage_map(&data);*/
-	ft_game(data);
+	/*ft_game(data);
 	free_img(&data);
-	ft_free_ls(data.map.m);
+	ft_free_ls(data.map);
 	mlx_destroy_display(data.mlx);
-	free(data.mlx);
+	free(data.mlx);*/
 	return (0);
 }
 
@@ -56,7 +55,7 @@ int	end_cub3d(t_data *data)
 	free_img(data);
 	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
-	ft_free_ls(data->map.m);
+	ft_free_ls(data->map);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	exit(0);

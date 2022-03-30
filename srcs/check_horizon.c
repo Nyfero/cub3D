@@ -50,8 +50,8 @@ float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v)
 		my = (int)v->ry / d->size;		//pos y de la map
 		if ((my >= 0 && mx >= 0 && my < d->h && mx < d->l) && d->map.m[my][mx] == '1')	//wall hit
 		{
-			for (int test = 0; test< 64; test++)
-				for (int test2 = 0; test2< 64; test2++)
+			for (int test = 0; test< d->size; test++)
+				for (int test2 = 0; test2 < d->size; test2++)
 					mlx_pixel_put(d->mlx, d->win, mx * d->size + test, my * d->size + test2, 0x5B034F);
 			return (ft_dist(pl->xp, pl->yp, v->rx, v->ry));
 		}

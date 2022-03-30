@@ -19,17 +19,19 @@
 
 typedef struct	s_imge
 {
-	void	*img;
-	int		w;
-	int		h;
+	void			*img;
+	unsigned int	*addr;
+	int				pixel;
+	int				line;
+	int				endian;
 }	t_imge;
 
-typedef struct s_wall
+typedef struct	s_wall
 {
-	void			*no;
-	void			*so;
-	void			*we;
-	void			*ea;
+	t_imge			no;
+	t_imge			so;
+	t_imge			we;
+	t_imge			ea;
 
 	int				fl;
 	int				cl;
@@ -38,42 +40,41 @@ typedef struct s_wall
 
 }	t_wall;
 
-typedef struct s_player
+typedef struct	s_player
 {
-	float		xp;
-	float		yp;
+	float	xp;
+	float	yp;
 	float	dxp;
 	float	dyp;
 	float	ap;
 
 }	t_player;
 
-typedef struct s_map
+typedef struct	s_mini_map
 {
-	char	**m;
-	int		x;
-	int		y;
-}	t_map;
+	void	*gr;
+	void	*wl;
+	void	*pl;
+	
+	int		size_map;
+}	t_mini_map;
 
-typedef struct s_data
+typedef struct	s_data
 {
 	void		*mlx;
 	void		*win;
+	void		*win3d;
 
 	t_wall		wall;
-	t_player	*pl;
-	t_map		map;
-
 	int			size;
+	t_player	*pl;
+	
+	char		**map;
 	int			h;
 	int			l;
 
-	void		*s;
-	void		*w;
-	void		*p;
-	void		*win3d;
-	int			hwin;
-	int			lwin;
+	t_imge		screen;
+	int			size_screen;
 
 }	t_data;
 
@@ -104,13 +105,14 @@ int		check_map_closed(t_data *data);
 int		check_left(t_data *data);
 int		check_right(t_data *data);
 int		check_top_and_bot(t_data *data);
+int		len_nbr(int nbr);
 
 //	parsing.c
 int		parsing(t_data *data, char *file);
 void	init_wall(t_data *data);
 int		init_map(t_data *data);
 int		init_player(t_data *data);
-int		len_nbr(int nbr);
+void	convert_img_to_int(t_data *data);
 
 //	parsing_texture.c
 int		parse_wall(t_data *data, char *file);
