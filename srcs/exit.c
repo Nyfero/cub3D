@@ -5,6 +5,8 @@ void	exit_before_exec(t_data *data)
 	free_img(data);
 	if (data->map)
 		ft_free_ls(data->map);
+	if (data->pl)
+		free(data->pl);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 }
@@ -19,4 +21,17 @@ void	free_img(t_data *data)
 		mlx_destroy_image(data->mlx, data->wall.we.img);
 	if (data->wall.ea.img)
 		mlx_destroy_image(data->mlx, data->wall.ea.img);
+	if (data->screen.img)
+		mlx_destroy_image(data->mlx, data->screen.img);
+}
+
+void	end_cub3d(t_data *data)
+{
+	free_img(data);
+	//mlx_clear_window(data->mlx, data->win3d);
+	//mlx_destroy_window(data->mlx, data->win3d);
+	ft_free_ls(data->map);
+	free(data->pl);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }

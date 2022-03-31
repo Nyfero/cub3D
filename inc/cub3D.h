@@ -62,7 +62,6 @@ typedef struct	s_mini_map
 typedef struct	s_data
 {
 	void		*mlx;
-	void		*win;
 	void		*win3d;
 
 	t_wall		wall;
@@ -86,26 +85,17 @@ typedef struct s_check
 	float	yo;
 }	t_check;
 
-int		end_cub3d(t_data *data);
 int		mouse_hook(int mouse, t_data *data);
 void	init_mouse(t_data *data);
 
-//	print_info.c
-void	print_map(t_data *data);
-void	print_player(t_data *data);
-void	print_texture(t_data *data);
+/****************************/
+/*			PARSING			*/
+/****************************/
 
 //	check_args.c
 int		check_args(int argc, char **argv);
 int		check_good_format(char *file);
 int		error_file(int err);
-
-//	check_map.c
-int		check_map_closed(t_data *data);
-int		check_left(t_data *data);
-int		check_right(t_data *data);
-int		check_top_and_bot(t_data *data);
-int		len_nbr(int nbr);
 
 //	parsing.c
 int		parsing(t_data *data, char *file);
@@ -128,15 +118,49 @@ int		is_part_of_map(t_data *data, char *line);
 void	get_map(t_data *data, char *line);
 void	fill_map(t_data *data, char *line, int i, int j);
 
+//	check_map.c
+int		check_map_closed(t_data *data);
+int		check_left(t_data *data);
+int		check_right(t_data *data);
+int		check_top_and_bot(t_data *data);
+int		len_nbr(int nbr);
+
 //	parsing_player.c
 int		get_player_info(t_data *data);
 int		place_player(t_data *data, int i, int j);
 
+/****************************/
+/*			UTILS			*/
+/****************************/
+
+//	print_info.c
+void	print_map(t_data *data);
+void	print_player(t_data *data);
+void	print_texture(t_data *data);
+
+/****************************/
+/*			END				*/
+/****************************/
+
 //	exit.c
 void 	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
+void	end_cub3d(t_data *data);
 
+/****************************/
+/*			MATH			*/
+/****************************/
 
+/****************************/
+/*			BONUS			*/
+/****************************/
+
+//	parsing_map_bonus.c
+int		parsing_bonus(t_data *data, char *file);
+int		parse_map_bonus(t_data *data, char *file);
+int		get_size_map_bonus(t_data *data, char *file);
+int		is_part_of_map_bonus(t_data *data, char *line);
+void	get_map_bonus(t_data *data, char *file);
 
 /******************************************/
 

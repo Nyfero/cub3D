@@ -15,17 +15,7 @@ int	main(int argc, char **argv)
 		return (3);
 	}
 	printf("EXIT\n");
-	exit_before_exec(&data);
-	/*data.win = mlx_new_window(data.mlx, data.h * data.size, data.l * data.size, "map_cub3D");
-	data.size_screen = 720;
-	data.win3d = mlx_new_window(data.mlx, data.size_screen, data.size_screen, "cub3D");*/
-	/*ft_creation_img(&data);
-	ft_affichage_map(&data);*/
-	/*ft_game(data);
-	free_img(&data);
-	ft_free_ls(data.map);
-	mlx_destroy_display(data.mlx);
-	free(data.mlx);*/
+	end_cub3d(&data);
 	return (0);
 }
 
@@ -48,15 +38,4 @@ int	mouse_hook(int mouse, t_data *data)
 	/*ft_affichage_map(data);
 	ft_3d_render(data);*/
 	return (0);
-}
-
-int	end_cub3d(t_data *data)
-{
-	free_img(data);
-	mlx_clear_window(data->mlx, data->win);
-	mlx_destroy_window(data->mlx, data->win);
-	ft_free_ls(data->map);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	exit(0);
 }
