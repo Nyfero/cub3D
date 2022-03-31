@@ -29,6 +29,7 @@ int	init_wall(t_data *data)
 	data->wall->we.img = NULL;
 	data->wall->ea.img = NULL;
 	data->screen.img = NULL;
+	data->size_screen = 720;
 	data->mmap.gr = NULL;
 	data->mmap.wl = NULL;
 	data->mmap.pl = NULL;

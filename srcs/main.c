@@ -14,7 +14,7 @@ int	main(int argc, char **argv)
 		exit_before_exec(&data);
 		return (3);
 	}
-	data.win3d = mlx_new_window(data.mlx, data.size_screen, data.size_screen, "cub3d");
+	data.win3d = mlx_new_window(data.mlx, 720, 720, "cub3d");
 	ft_game(data);
 	printf("EXIT\n");
 	end_cub3d(&data);
