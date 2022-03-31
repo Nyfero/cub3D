@@ -33,22 +33,21 @@ MLX = $(addprefix $(MLX_PATH)/,libmlx_Linux.a libmlx.a)
 #    Folders
 SRCS_PATH = srcs
 
-TEST_PATH = test
-
 #    Files
 FILES = main.c check_args.c parsing.c parsing_texture.c parsing_map.c exit.c \
 	print_info.c check_map.c parsing_player.c mini_map.c game.c \
 	check_deplacement.c render_3d.c check_horizon.c check_vertical.c \
 	calc_utils.c door.c utils_game.c render_3d_utils.c
 
+FILES_BONUS = main_bonus.c check_args.c parsing.c parsing_texture.c parsing_map_bonus.c \
+	exit.c print_info.c check_map.c parsing_player.c mini_map.c game.c parsing_map.c \
+	check_deplacement.c render_3d.c check_horizon.c check_vertical.c \
+	calc_utils.c door.c utils_game.c render_3d_utils.c
 
-FILES_TEST = main_test.c 
 #    Compilation
 NAME = cub3D
 
-TEST= cub3D_test
-
-
+BONUS = cub3D_bonus
 
 CC = clang
 
@@ -58,44 +57,30 @@ MLX_FLAG = -Lmlx_linux -Lmlx -L/usr/lib -Imlx_linux -lXext -lX11 -lm
 
 RM = rm -rf
 
-
-
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
-SRCS_TEST = $(addprefix $(TEST_PATH)/, $(FILES_TEST))
-
-
+SRCS_BONUS = $(addprefix $(SRCS_PATH)/, $(FILES_BONUS))
 
 OBJS_PATH = objs/
 
-OBJS_TEST_PATH = objs_test/
-
-
-
 OBJS = $(patsubst $(SRCS_PATH)%.c,    $(OBJS_PATH)%.o, $(SRCS))
 
-OBJS_TEST = $(patsubst $(TEST_PATH)%.c,    $(OBJS_TEST_PATH)%.o, $(SRCS_TEST))
-
-
+OBJS_BONUS = $(patsubst $(SRCS_PATH)%.c,    $(OBJS_PATH)%.o, $(SRCS_BONUS))
 
 #    Rules
 all: $(NAME)
 
-test:$(TEST)
-
-
+bonus:$(BONUS)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS_PATH) $(OBJS) $(INC)/$(NAME).h
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
 	$(HIDE) $(CC) $(CFLAGS) $(MLX_FLAG) $(OBJS) -o $(NAME) $(LIBFT) $(MLX)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
 
-$(TEST): $(LIBFT) $(MLX) $(OBJS_TEST_PATH) $(OBJS_TEST) $(INC)/$(NAME).h
-	@ echo "$(BLUE)\n         ***Make $(TEST) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(MLX_FLAG) $(OBJS_TEST) -o $(TEST) $(LIBFT) $(MLX)
-	@ echo "$(GREEN)\n        ---$(TEST) created ---\n$(END)"
-
-
+$(BONUS): $(LIBFT) $(MLX) $(OBJS_PATH) $(OBJS_BONUS) $(INC)/$(NAME).h
+	@ echo "$(BLUE)\n         ***Make $(BONUS) ***\n$(END)"
+	$(HIDE) $(CC) $(CFLAGS) $(MLX_FLAG) $(OBJS_BONUS) -o $(BONUS) $(LIBFT) $(MLX)
+	@ echo "$(GREEN)\n        ---$(BONUS) created ---\n$(END)"
 
 $(LIBFT): libft/Makefile
 	@ echo "$(BLUE)\n        ***Make Libft ***\n$(END)"
@@ -106,39 +91,25 @@ $(MLX):
 	$(HIDE) make -C $(MLX_PATH)
 	@ echo "$(GREEN)\n        ---MinilibX created ---\n$(END)"
 
-
-
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
-	
-$(OBJS_TEST_PATH):
-	$(HIDE) mkdir -p $(OBJS_TEST_PATH)
-
-
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(INC)/$(NAME).h Makefile
 	$(HIDE) $(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
-	
-$(OBJS_TEST_PATH)%.o: $(TEST_PATH)%.c $(INC)/$(NAME).h Makefile
-	$(HIDE) $(CC) $(CFLAGS) -I $(INC) -c $< -o $@
-	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
-
-
 
 clean:
 	$(HIDE) $(RM) $(OBJS_PATH)
-	$(HIDE) $(RM) $(OBJS_TEST_PATH)
 	$(HIDE) make clean -C $(LIBFT_DIR)
 	@ echo "$(PURPLE)\n        ***Clean objects ***\n$(END)"
 
 fclean: clean
 	$(HIDE) $(RM) $(NAME)
-	$(HIDE) $(RM) $(TEST)
+	$(HIDE) $(RM) $(BONUS)
 	$(HIDE) make fclean -C $(LIBFT_DIR)
 	$(HIDE) make clean -C $(MLX_PATH)
 	@ echo "$(RED)\n        *** Remove $(NAME) ***\n$(END)"
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re bonus

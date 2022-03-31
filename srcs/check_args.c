@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_args.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:01:20 by gsap              #+#    #+#             */
+/*   Updated: 2022/03/31 17:37:51 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int	check_args(int argc, char **argv)
@@ -68,4 +80,19 @@ int	error_file(int err)
 	else if (err == 11)
 		ft_putendl_fd("Map is to big", 2);
 	return (1);
+}
+
+int	error_player(void)
+{
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd("No player on the map", 2);
+	return (1);
+}
+
+int	check_no_more(char *line, int i)
+{
+	while (line[i])
+		if (line[i++] != ' ')
+			return (error_file(5));
+	return (0);
 }

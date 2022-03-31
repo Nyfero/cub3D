@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:02:06 by gsap              #+#    #+#             */
+/*   Updated: 2022/03/31 17:36:52 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int	parsing(t_data *data, char *file)
@@ -11,7 +23,6 @@ int	parsing(t_data *data, char *file)
 		return (error_file(6));
 	data->screen.img = mlx_new_image(data->mlx, 720, 720);
 	convert_img_to_int(data);
-	print_texture(data);
 	if (parse_map(data, file))
 		return (1);
 	if (create_mini(data))
@@ -24,6 +35,8 @@ int	init_wall(t_data *data)
 	data->wall = (t_wall *)ft_calloc(sizeof(t_wall), 1);
 	if (!data->wall)
 		return (1);
+	data->p2 = PI / 2;
+	data->p3 = 3 * PI / 2;
 	data->wall->no.img = NULL;
 	data->wall->so.img = NULL;
 	data->wall->we.img = NULL;

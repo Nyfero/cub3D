@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 17:01:40 by gsap              #+#    #+#             */
-/*   Updated: 2022/03/31 18:10:48 by gsap             ###   ########.fr       */
+/*   Created: 2022/03/31 16:02:56 by gsap              #+#    #+#             */
+/*   Updated: 2022/03/31 17:00:14 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		return (2);
-	if (parsing(&data, argv[1]))
+	if (parsing_bonus(&data, argv[1]))
 	{
 		exit_before_exec(&data);
 		return (3);

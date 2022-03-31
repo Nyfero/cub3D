@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:34 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 15:22:42 by gsap             ###   ########.fr       */
+/*   Updated: 2022/03/31 17:39:50 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_3d_dist_horizontal(t_data *d, float dist, t_3d_dist g)
 void	ft_3d_dist_vertical(t_data *d, float dist, t_3d_dist g)
 {
 	g.tx = (int)(g.vv.ry) % d->size;
-	if (g.ra < P2 || g.ra > P3)
+	if (g.ra < d->p2 || g.ra > d->p3)
 	{
 		g.tx = d->size - 1 - g.tx;
 		ft_3d_draw(d, dist, g, d->wall->ea.addr);

@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:36 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 15:22:29 by gsap             ###   ########.fr       */
+/*   Updated: 2022/03/31 17:08:26 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_3d_dist(t_data *d, float ra, int r)
 		ft_3d_dist_vertical(d, distv * cos(g.ca), g);
 	else if (distv < 0)
 		ft_3d_dist_horizontal(d, disth * cos(g.ca), g);
-	else if (distv > disth)	
+	else if (distv > disth)
 		ft_3d_dist_horizontal(d, disth * cos(g.ca), g);
 	else
 		ft_3d_dist_vertical(d, distv * cos(g.ca), g);

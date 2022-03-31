@@ -1,18 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_map_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:01:48 by gsap              #+#    #+#             */
+/*   Updated: 2022/03/31 17:01:50 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int	parsing_bonus(t_data *data, char *file)
 {
-	init_wall(data);
+	if (init_wall(data))
+		return (1);
 	if (parse_wall(data, file))
 		return (1);
-	if (!data->wall.no.img || !data->wall.so.img || !data->wall.we.img
-		|| !data->wall.ea.img || data->wall.fl < 0 || data->wall.cl < 0)
+	if (!data->wall->no.img || !data->wall->so.img || !data->wall->we.img
+		|| !data->wall->ea.img || data->wall->fl < 0 || data->wall->cl < 0)
 		return (error_file(6));
+	data->screen.img = mlx_new_image(data->mlx, 720, 720);
 	convert_img_to_int(data);
-	print_texture(data);
 	if (parse_map_bonus(data, file))
 		return (1);
-	if (create_mini_map_bonus(data))
+	if (create_mini_bonus(data))
 		return (1);
 	return (0);
 }
@@ -28,14 +41,12 @@ int	parse_map_bonus(t_data *data, char *file)
 	if (init_map(data))
 		return (1);
 	get_map_bonus(data, file);
-	print_map(data);
 	if (check_map_closed(data))
 		return (1);
 	if (init_player(data))
 		return (1);
 	if (get_player_info(data))
 		return (1);
-	print_player(data);
 	return (0);
 }
 
