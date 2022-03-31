@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_deplacement.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 13:45:14 by jgourlin          #+#    #+#             */
+/*   Updated: 2022/03/31 14:24:02 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int	ft_check_wall(float x, float y, t_data *d)
@@ -7,7 +19,7 @@ int	ft_check_wall(float x, float y, t_data *d)
 
 	pos_x = (int)x / d->size;
 	pos_y = (int)y / d->size;
-	if (d->map.m[pos_x][pos_y] == '1')
+	if (d->map[pos_x][pos_y] == '1')
 		return (1);
 	return (0);
 }

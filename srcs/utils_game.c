@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_utils.c                                       :+:      :+:    :+:   */
+/*   utils_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 13:45:11 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 13:48:14 by jgourlin         ###   ########.fr       */
+/*   Created: 2022/03/31 13:45:40 by jgourlin          #+#    #+#             */
+/*   Updated: 2022/03/31 13:48:30 by jgourlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-float	ft_dist(float x, float y, float x2, float y2)
+void	ft_utils_game_change(t_data *d, float temp_x, float temp_y)
 {
-	return (sqrt(powf(x - x2, 2) + powf(y - y2, 2)));
+	d->pl->xp -= temp_x;
+	d->pl->yp -= temp_y;
 }

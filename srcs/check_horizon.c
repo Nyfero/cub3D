@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_horizon.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 13:45:16 by jgourlin          #+#    #+#             */
+/*   Updated: 2022/03/31 14:24:34 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	ft_check_horizontal_up(t_data *d, t_player *pl, t_check *v, float ra)
@@ -48,7 +60,7 @@ float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v)
 		mx = (int)v->rx / d->size;
 		my = (int)v->ry / d->size;
 		if ((my >= 0 && mx >= 0 && my < d->h && mx < d->l)
-			&& (d->map.m[my][mx] == '1' || d->map.m[my][mx] == '2'))
+			&& (d->map[my][mx] == '1' || d->map[my][mx] == '2'))
 			return (ft_dist(pl->xp, pl->yp, v->rx, v->ry));
 		else if (my < 0 || my < 0 || my > d->h || mx > d->l)
 			dof = d->h;

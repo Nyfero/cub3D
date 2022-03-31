@@ -33,15 +33,15 @@ void	print_player(t_data *data)
 void	print_texture(t_data *data)
 {
 	printf("\n\t---INFO TEXTURE---\n");
-	printf("Wall NO xpm:%p\n", data->wall.no.img);
-	printf("Wall NO int:%p\n", data->wall.no.addr);
-	printf("Wall SO xpm:%p\n", data->wall.so.img);
-	printf("Wall SO int:%p\n", data->wall.so.addr);
-	printf("Wall WE xpm:%p\n", data->wall.we.img);
-	printf("Wall WE int:%p\n", data->wall.we.addr);
-	printf("Wall EA xpm:%p\n", data->wall.ea.img);
-	printf("Wall EA int:%p\n\n", data->wall.ea.addr);
-	printf("Floor:%d\n", data->wall.fl);
-	printf("Celling:%d\n", data->wall.cl);
+	printf("Wall NO xpm:%p\n", data->wall->no.img);
+	printf("Wall NO int:%p\n", data->wall->no.addr);
+	printf("Wall SO xpm:%p\n", data->wall->so.img);
+	printf("Wall SO int:%p\n", data->wall->so.addr);
+	printf("Wall WE xpm:%p\n", data->wall->we.img);
+	printf("Wall WE int:%p\n", data->wall->we.addr);
+	printf("Wall EA xpm:%p\n", data->wall->ea.img);
+	printf("Wall EA int:%p\n\n", data->wall->ea.addr);
+	printf("Floor:%d\n", data->wall->fl);
+	printf("Celling:%d\n", data->wall->cl);
 	printf("\t---END INFO TEXTURE---\n");
 }

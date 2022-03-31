@@ -66,7 +66,7 @@ typedef struct	s_data
 	void		*mlx;
 	void		*win3d;
 
-	t_wall		wall;
+	t_wall		*wall;
 	int			size;
 	t_player	*pl;
 	
@@ -89,6 +89,27 @@ typedef struct s_check
 	float	yo;
 }	t_check;
 
+typedef struct s_3d_dist
+{
+	int		r;
+	t_check	vh;
+	t_check	vv;
+	float	ra;
+	float	ca;
+	float	tx;
+
+}	t_3d_dist;
+
+typedef struct s_3d_draw
+{
+	int		y;
+	float	line_h;
+	float	line_o;
+	float	ty;
+	float	ty_off;
+	float	ty_step;
+}	t_3d_draw;
+
 int		mouse_hook(int mouse, t_data *data);
 void	init_mouse(t_data *data);
 
@@ -103,7 +124,7 @@ int		error_file(int err);
 
 //	parsing.c
 int		parsing(t_data *data, char *file);
-void	init_wall(t_data *data);
+int		init_wall(t_data *data);
 int		init_map(t_data *data);
 int		init_player(t_data *data);
 void	convert_img_to_int(t_data *data);
@@ -134,12 +155,22 @@ int		get_player_info(t_data *data);
 int		place_player(t_data *data, int i, int j);
 
 //	mini_map.c
-int		create_mini_map(t_data *data);
-int		create_mini_map_bonus(t_data *data);
+void	short_pitw(t_data *d, void *img, int x, int y);
+int		create_mini(t_data *data);
+int		create_mini_bonus(t_data *data);
+void	ft_mini_map_if(t_data *d, int y, int x);
+void	ft_mini_map(t_data *d);
 
 /****************************/
 /*			UTILS			*/
 /****************************/
+
+//	game.c
+void	ft_rotation(int nb, t_player *p);
+void	ft_deplacement_hor(t_data *d, int nb, t_player *p);
+void	ft_deplacement_vert(t_data *d, int nb, t_player *p);
+int		ft_game_event(int key, t_data *d);
+int		ft_game(t_data d);
 
 //	print_info.c
 void	print_map(t_data *data);
@@ -153,7 +184,7 @@ void	print_texture(t_data *data);
 //	exit.c
 void 	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
-void	end_cub3d(t_data *data);
+int		end_cub3d(t_data *data);
 
 /****************************/
 /*			MATH			*/
@@ -172,25 +203,13 @@ void	get_map_bonus(t_data *data, char *file);
 
 /******************************************/
 
-
-//	texture.c
-void	ft_affichage_map(t_data *d);
-void	ft_put_img(t_data *d, void *image, int x, int y);
-void	ft_creation_img(t_data *d);
-
-//	game.c
-int	ft_game(t_data d);
-void	ft_rotation(int nb, t_player *p);
-
-//	exit_jgour.c
-int	cub3d_exit(t_data *d);
-
 //	check_deplacement.c
 int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
 int	ft_check_deplacement_2(t_data *d, t_player *p);
 
 //	render_3d.c
 void	ft_3d_render(t_data *d);
+void	ft_3d_draw(t_data *d, float dist, t_3d_dist s, int *img);
 
 //	check_horizon.c
 float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v);
@@ -206,5 +225,13 @@ void	ft_mini_map(t_data *d);
 
 //	door.c
 void	ft_check_door(float x, float y, t_data *d);
+
+//	utils_game.c
+void	ft_utils_game_change(t_data *d, float temp_x, float temp_y);
+
+//	render_3d_utils.c
+void	ft_3d_dist_horizontal(t_data *d, float dist, t_3d_dist g);
+void	ft_3d_dist_vertical(t_data *d, float dist, t_3d_dist g);
+void	ft_3d_draw_init(t_data *d, t_3d_draw *g, float dist);
 
 #endif

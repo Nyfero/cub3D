@@ -147,6 +147,13 @@ int	main(void)
 	d.mlx = mlx_init();
 	if (d.mlx == 0)
 		return (1);
+	w0.fl = 0xFF0000;
+	w1.fl = 0xFF0000;
+	w2.fl = 0xFF0000;
+
+	w0.cl = 0x48FF50;
+	w1.cl = 0x48FF50;
+	w2.cl = 0x48FF50;
 	ft_init_img(&w0, &d);
 	ft_init_img1(&w1, &d);
 	ft_init_img2(&w2, &d);
