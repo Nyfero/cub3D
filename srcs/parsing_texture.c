@@ -68,7 +68,7 @@ int	get_texture(t_data *data, char **tab)
 				&data->size, &data->size);
 	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !data->wall.ea.img)
 		data->wall.ea.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-			&data->size, &data->size);
+				&data->size, &data->size);
 	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && data->wall.cl == -1)
 		data->wall.cl = get_color(tab);
 	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && data->wall.fl == -1)
@@ -76,14 +76,13 @@ int	get_texture(t_data *data, char **tab)
 	else
 		return (error_file(5));
 	return (0);
-	
 }
 
 int	get_color(char **line)
 {
 	int		i;
 	char	*tmp;
-	
+
 	i = 0;
 	tmp = NULL;
 	if (ft_lstrlen(line) == 2)
@@ -102,11 +101,11 @@ int	get_color(char **line)
 
 int	one_line(char *line)
 {
-	int r;
+	int	r;
 	int	g;
 	int	b;
 	int	i;
-	
+
 	i = 0;
 	r = ft_atoi(line);
 	i += len_nbr(r) + 1;

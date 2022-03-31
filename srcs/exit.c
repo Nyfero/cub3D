@@ -23,6 +23,12 @@ void	free_img(t_data *data)
 		mlx_destroy_image(data->mlx, data->wall.ea.img);
 	if (data->screen.img)
 		mlx_destroy_image(data->mlx, data->screen.img);
+	if (data->mmap.gr)
+		mlx_destroy_image(data->mlx, data->mmap.gr);
+	if (data->mmap.wl)
+		mlx_destroy_image(data->mlx, data->mmap.wl);
+	if (data->mmap.pl)
+		mlx_destroy_image(data->mlx, data->mmap.pl);
 }
 
 void	end_cub3d(t_data *data)

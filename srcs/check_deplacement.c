@@ -43,6 +43,7 @@ int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy)
 
 	tx = p->xp - dx;
 	ty = p->yp - dy;
+	ft_check_door(tx, ty, d);
 	return (ft_check_radius(tx, ty, 5, d));
 }
 
@@ -53,5 +54,6 @@ int	ft_check_deplacement_2(t_data *d, t_player *p)
 
 	tx = p->xp + p->dxp;
 	ty = p->yp + p->dyp;
+	ft_check_door(tx, ty, d);
 	return (ft_check_radius(tx, ty, 5, d));
 }

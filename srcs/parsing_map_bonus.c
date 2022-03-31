@@ -12,6 +12,8 @@ int	parsing_bonus(t_data *data, char *file)
 	print_texture(data);
 	if (parse_map_bonus(data, file))
 		return (1);
+	if (create_mini_map_bonus(data))
+		return (1);
 	return (0);
 }
 
@@ -78,7 +80,7 @@ int	is_part_of_map_bonus(t_data *data, char *line)
 	{
 		if (line[i] == ' ' || line[i] == '0' || line[i] == '1' || line[i] == 'N'
 			|| line[i] == 'E' || line[i] == 'S' || line[i] == 'W'
-				|| line[i] == '2')
+			|| line[i] == '2')
 			tmp++;
 		else
 			return (0);

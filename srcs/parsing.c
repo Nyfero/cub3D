@@ -13,6 +13,8 @@ int	parsing(t_data *data, char *file)
 	print_texture(data);
 	if (parse_map(data, file))
 		return (1);
+	if (create_mini_map(data))
+		return (1);
 	return (0);
 }
 
@@ -23,6 +25,11 @@ void	init_wall(t_data *data)
 	data->wall.we.img = NULL;
 	data->wall.ea.img = NULL;
 	data->screen.img = NULL;
+	data->mmap.gr = NULL;
+	data->mmap.wl = NULL;
+	data->mmap.pl = NULL;
+	data->mmap.cdoor = NULL;
+	data->mmap.odoor = NULL;
 	data->wall.fl = -1;
 	data->wall.cl = -1;
 	data->size = 64;
@@ -76,20 +83,20 @@ int	init_player(t_data *data)
 void	convert_img_to_int(t_data *data)
 {
 	char	*tmp;
-	
+
 	tmp = mlx_get_data_addr(data->wall.no.img, &data->wall.no.pixel,
 			&data->wall.no.line, &data->wall.no.endian);
-	data->wall.no.addr = (unsigned int	*)tmp;
+	data->wall.no.addr = (int *)tmp;
 	tmp = mlx_get_data_addr(data->wall.so.img, &data->wall.so.pixel,
 			&data->wall.so.line, &data->wall.so.endian);
-	data->wall.so.addr = (unsigned int	*)tmp;
+	data->wall.so.addr = (int *)tmp;
 	tmp = mlx_get_data_addr(data->wall.we.img, &data->wall.we.pixel,
 			&data->wall.we.line, &data->wall.we.endian);
-	data->wall.we.addr = (unsigned int	*)tmp;
+	data->wall.we.addr = (int *)tmp;
 	tmp = mlx_get_data_addr(data->wall.ea.img, &data->wall.ea.pixel,
 			&data->wall.ea.line, &data->wall.ea.endian);
-	data->wall.ea.addr = (unsigned int	*)tmp;
+	data->wall.ea.addr = (int *)tmp;
 	tmp = mlx_get_data_addr(data->screen.img, &data->screen.pixel,
 			&data->screen.line, &data->screen.endian);
-	data->screen.addr = (unsigned int	*)tmp;
+	data->screen.addr = (int *)tmp;
 }

@@ -19,11 +19,11 @@
 
 typedef struct	s_imge
 {
-	void			*img;
-	unsigned int	*addr;
-	int				pixel;
-	int				line;
-	int				endian;
+	void	*img;
+	int		*addr;
+	int		pixel;
+	int		line;
+	int		endian;
 }	t_imge;
 
 typedef struct	s_wall
@@ -55,7 +55,9 @@ typedef struct	s_mini_map
 	void	*gr;
 	void	*wl;
 	void	*pl;
-	
+	void	*cdoor;
+	void	*odoor;
+
 	int		size_map;
 }	t_mini_map;
 
@@ -72,6 +74,8 @@ typedef struct	s_data
 	int			h;
 	int			l;
 
+	t_mini_map	mmap;
+	
 	t_imge		screen;
 	int			size_screen;
 
@@ -128,6 +132,10 @@ int		len_nbr(int nbr);
 //	parsing_player.c
 int		get_player_info(t_data *data);
 int		place_player(t_data *data, int i, int j);
+
+//	mini_map.c
+int		create_mini_map(t_data *data);
+int		create_mini_map_bonus(t_data *data);
 
 /****************************/
 /*			UTILS			*/
@@ -192,5 +200,11 @@ float	ft_check_vertical(t_data *d, t_player *pl, float ra, t_check *v);
 
 //	calc_utils.c
 float	ft_dist(float x, float y, float x2, float y2);
+
+//	mini_map.c
+void	ft_mini_map(t_data *d);
+
+//	door.c
+void	ft_check_door(float x, float y, t_data *d);
 
 #endif

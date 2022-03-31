@@ -54,7 +54,6 @@ void	ft_deplacement_hor(t_data *d, int nb, t_player *p)
 
 void	ft_deplacement_vert(t_data *d, int nb, t_player *p)
 {
-//	printf("avt p.y = %d\n", p->yp);
 	if (nb > 0)//s
 	{
 		if (!ft_check_deplacement_2(d, p))
@@ -71,36 +70,39 @@ void	ft_deplacement_vert(t_data *d, int nb, t_player *p)
 			p->yp -=  p->dyp;
 		}
 	}
-//	printf("apr p.y = %d\n", p->yp);
 }
 
-int	ft_game_event(int keycode, t_data *d)
+int	ft_game_event(int key, t_data *d)
 {
-	if (keycode == 65307)
+	if (key == 65307)
 		cub3d_exit(d);
-	if (keycode == 65361)
+	if (key == 65361)
 		ft_rotation(1, d->pl);
-	if (keycode == 65363)
+	if (key == 65363)
 		ft_rotation(-1, d->pl);
-	if (keycode == 119)
+	if (key == 119)
 		ft_deplacement_vert(d, -1, d->pl);
-	if (keycode == 97)
+	if (key == 97)
 		ft_deplacement_hor(d, -1, d->pl);
-	if (keycode == 115)
+	if (key == 115)
 		ft_deplacement_vert(d, 1, d->pl);
-	if (keycode == 100)
+	if (key == 100)
 		ft_deplacement_hor(d, 1, d->pl);
-	ft_affichage_map(d);
-	ft_3d_render(d);
+	if (key == 65307 || key == 65361 || key == 65363 || key == 119 || key == 97
+		|| key == 115 || key == 100)
+	{
+		ft_affichage_map(d);
+		ft_3d_render(d);
+		if (d->wall->next)
+			d->wall = d->wall->next;
+	}
 	return (0);
 }
 
 int	ft_game(t_data d)
 {
-	//ft_aff_2d(d);
+	ft_3d_render(&d);
 	mlx_hook(d.win3d, 02, (1L<<0), ft_game_event, &d);
-	init_mouse(&d);
-	//mlx_key_hook(d.win, ft_game_event, &d);
 	mlx_hook(d.win3d, 33, 1L << 5, cub3d_exit, &d);//exit croix
 	mlx_loop(d.mlx);
 	return (0);
