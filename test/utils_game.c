@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_jgour.c                                       :+:      :+:    :+:   */
+/*   utils_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 13:45:24 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 13:45:24 by jgourlin         ###   ########.fr       */
+/*   Created: 2022/03/31 13:45:40 by jgourlin          #+#    #+#             */
+/*   Updated: 2022/03/31 13:45:40 by jgourlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	cub3d_exit(t_data *d)
+void	ft_utils_game_change(t_data *d, float temp_x, float temp_y)
 {
-	printf("END OF GAME\n");
-
-	mlx_clear_window(d->mlx, d->win);
-	mlx_destroy_window(d->mlx, d->win);
-	mlx_destroy_display(d->mlx);
-	free(d->mlx);
-	exit (0);
+	d->pl->xp -= temp_x;
+	d->pl->yp -= temp_y;
 }

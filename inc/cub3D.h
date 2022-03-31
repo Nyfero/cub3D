@@ -94,6 +94,27 @@ typedef struct s_check
 	float	yo;
 }	t_check;
 
+typedef struct s_3d_dist
+{
+	int		r;
+	t_check	vh;
+	t_check	vv;
+	float	ra;
+	float	ca;
+	float	tx;
+
+}	t_3d_dist;
+
+typedef struct s_3d_draw
+{
+	int		y;
+	float	line_h;
+	float	line_o;
+	float	ty;
+	float	ty_off;
+	float	ty_step;
+}	t_3d_draw;
+
 int		end_cub3d(t_data *data);
 int		mouse_hook(int mouse, t_data *data);
 void	init_mouse(t_data *data);
@@ -165,6 +186,7 @@ int	ft_check_deplacement_2(t_data *d, t_player *p);
 
 //	render_3d.c
 void	ft_3d_render(t_data *d);
+void	ft_3d_draw(t_data *d, float dist, t_3d_dist s, int *img);
 
 //	check_horizon.c
 float	ft_check_horizontal(t_data *d, t_player *pl, float ra, t_check *v);
@@ -180,5 +202,13 @@ void	ft_mini_map(t_data *d);
 
 //	door.c
 void	ft_check_door(float x, float y, t_data *d);
+
+//	utils_game.c
+void	ft_utils_game_change(t_data *d, float temp_x, float temp_y);
+
+//	render_3d_utils.c
+void	ft_3d_dist_horizontal(t_data *d, float dist, t_3d_dist g);
+void	ft_3d_dist_vertical(t_data *d, float dist, t_3d_dist g);
+void	ft_3d_draw_init(t_data *d, t_3d_draw *g, float dist);
 
 #endif
