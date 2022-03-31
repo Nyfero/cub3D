@@ -43,7 +43,7 @@ FILES_TEST = main_test.c game.c \
 		exit_jgour.c texture.c \
 		check_deplacement.c render_3d.c \
 		check_horizon.c check_vertical.c \
-		calc_utils.c
+		calc_utils.c mini_map.c door.c
 
 #    Compilation
 NAME = cub3D

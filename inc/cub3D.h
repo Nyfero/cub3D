@@ -20,8 +20,10 @@
 typedef struct	s_imge
 {
 	void	*img;
-	int		w;
-	int		h;
+	int		*addr;
+	int		pixel;
+	int		line;
+	int		endian;
 }	t_imge;
 
 typedef struct s_wall
@@ -61,20 +63,26 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 
-	t_wall		wall;
+	t_wall		*wall;
 	t_player	*pl;
 	t_map		map;
 
-	int			size;
-	int			h;
-	int			l;
+	int			size;//taille case
+	int			h;// nb de case h dans map
+	int			l;// nb de case l dans map
 
 	void		*s;
 	void		*w;
 	void		*p;
+	void		*odoor;
+	void		*cdoor;
+
 	void		*win3d;
 	int			hwin;
 	int			lwin;
+
+	t_imge		big_img;
+	int		test;
 
 }	t_data;
 
@@ -166,5 +174,11 @@ float	ft_check_vertical(t_data *d, t_player *pl, float ra, t_check *v);
 
 //	calc_utils.c
 float	ft_dist(float x, float y, float x2, float y2);
+
+//	mini_map.c
+void	ft_mini_map(t_data *d);
+
+//	door.c
+void	ft_check_door(float x, float y, t_data *d);
 
 #endif
