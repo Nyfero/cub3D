@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:02:56 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 13:29:16 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 14:29:59 by jgourlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	second_sprite(t_data *d)
 			&d->size, &d->size);
 	convert_img_to_int(d);
 }
-
+/*
 void	destroy_sprite(t_data *data)
 {
 	t_wall	*ptr;
@@ -100,6 +100,46 @@ void	destroy_sprite(t_data *data)
 		free(aux);
 		aux = NULL;
 	}
+	if (data->screen.img)
+		mlx_destroy_image(data->mlx, data->screen.img);
+	if (data->mmap.gr)
+		mlx_destroy_image(data->mlx, data->mmap.gr);
+	if (data->mmap.wl)
+		mlx_destroy_image(data->mlx, data->mmap.wl);
+	if (data->mmap.pl)
+		mlx_destroy_image(data->mlx, data->mmap.pl);
+}
+*/
+
+int		destroy_rec_lol(t_data *data, t_wall *w)
+{
+	t_wall	*tmp;
+
+	printf("ptr=%p\n", w);
+	if (!w)
+		return(0);
+	if (w->no.img)
+		mlx_destroy_image(data->mlx, w->no.img);
+	if (w->so.img)
+		mlx_destroy_image(data->mlx, w->so.img);
+	if (w->we.img)
+		mlx_destroy_image(data->mlx, w->we.img);
+	if (w->ea.img)
+		mlx_destroy_image(data->mlx, w->ea.img);
+	tmp = w->next;
+	w = NULL;
+	free(w);
+	destroy_rec_lol(data, tmp);
+	return (0);
+}
+
+void	destroy_sprite(t_data *data)
+{
+	printf("debt\n");
+	printf("debt\n");
+	printf("debt\n");
+	destroy_rec_lol(data, data->wall);
+	printf("end\n");
 	if (data->screen.img)
 		mlx_destroy_image(data->mlx, data->screen.img);
 	if (data->mmap.gr)
