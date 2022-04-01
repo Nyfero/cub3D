@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:21 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 14:27:59 by gsap             ###   ########.fr       */
+/*   Updated: 2022/03/31 16:43:20 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,13 @@ void	ft_check_door(float x, float y, t_data *d)
 	y1 = (int)y / 64;
 	while (i < 2)
 	{
-		printf("%d-", x1 + i);
 		while (j < 2)
 		{
-			printf("%d\n", y1 + j);
-			if (d->map[x1 + i][y1 + j] == '2')
-				printf("yo\n");
+			if (d->map[y1 + i][x1 + j] == '2')
+				d->map[y1 + i][x1 + j] = '3';
 			j++;
 		}
 		j = -1;
 		i++;
 	}
-printf("alpha 03\n");
 }

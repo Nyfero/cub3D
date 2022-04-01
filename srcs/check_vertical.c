@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:19 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 14:27:45 by gsap             ###   ########.fr       */
+/*   Updated: 2022/03/31 17:38:59 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ float	ft_check_vertical(t_data *d, t_player *pl, float ra, t_check *v)
 	int		dof;
 
 	dof = 0;
-	if (ra < P2 || ra > P3)
+	if (ra < d->p2 || ra > d->p3)
 		ft_check_vertical_left(d, pl, v, ra);
-	if (ra > P2 && ra < P3)
+	if (ra > d->p2 && ra < d->p3)
 		ft_check_vertical_right(d, pl, v, ra);
 	if (!ra || ra == PI)
 		ft_check_vertical_up_down(d, pl, v, &dof);

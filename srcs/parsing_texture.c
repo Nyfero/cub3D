@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_texture.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:02:02 by gsap              #+#    #+#             */
+/*   Updated: 2022/04/01 11:44:08 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int	parse_wall(t_data *data, char *file)
@@ -55,26 +67,28 @@ int	parse_texture(t_data *data, char *line)
 	return (ret);
 }
 
-int	get_texture(t_data *data, char **tab)
+int	get_texture(t_data *d, char **tab)
 {
-	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0])) && !data->wall->no.img)
-		data->wall->no.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0])) && !data->wall->so.img)
-		data->wall->so.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0])) && !data->wall->we.img)
-		data->wall->we.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !data->wall->ea.img)
-		data->wall->ea.img = mlx_xpm_file_to_image(data->mlx, tab[1],
-				&data->size, &data->size);
-	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && data->wall->cl == -1)
-		data->wall->cl = get_color(tab);
-	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && data->wall->fl == -1)
-		data->wall->fl = get_color(tab);
+	if (!ft_strncmp(tab[0], "NO", ft_strlen(tab[0])) && !d->wall->no.img)
+		d->wall->no.img = mlx_xpm_file_to_image(d->mlx, tab[1],
+				&d->size, &d->size);
+	else if (!ft_strncmp(tab[0], "SO", ft_strlen(tab[0])) && !d->wall->so.img)
+		d->wall->so.img = mlx_xpm_file_to_image(d->mlx, tab[1],
+				&d->size, &d->size);
+	else if (!ft_strncmp(tab[0], "WE", ft_strlen(tab[0])) && !d->wall->we.img)
+		d->wall->we.img = mlx_xpm_file_to_image(d->mlx, tab[1],
+				&d->size, &d->size);
+	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !d->wall->ea.img)
+		d->wall->ea.img = mlx_xpm_file_to_image(d->mlx, tab[1],
+				&d->size, &d->size);
+	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && d->cl == -1)
+		d->cl = get_color(tab);
+	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && d->fl == -1)
+		d->fl = get_color(tab);
 	else
 		return (error_file(5));
+	if (d->cl == -2 || d->fl == -2)
+		return (1);
 	return (0);
 }
 
@@ -108,22 +122,22 @@ int	one_line(char *line)
 
 	i = 0;
 	r = ft_atoi(line);
+	if (r >= 256)
+		return (-2);
 	i += len_nbr(r) + 1;
 	if (!line[i])
 		return (0 << 24 | r << 16 | 0 << 8 | 0);
 	g = ft_atoi(&line[i]);
+	if (g >= 256)
+		return (-2);
 	i += len_nbr(g) + 1;
 	if (!line[i])
 		return (0 << 24 | r << 16 | g << 8 | 0);
 	b = ft_atoi(&line[i]);
+	if (b >= 256)
+		return (-2);
 	i += len_nbr(b);
-	while (line[i])
-	{
-		if (line[i++] != ' ')
-		{
-			error_file(5);
-			return (-2);
-		}
-	}
+	if (check_no_more(line, i))
+		return (-2);
 	return (0 << 24 | r << 16 | g << 8 | b);
 }

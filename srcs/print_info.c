@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_info.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:02:10 by gsap              #+#    #+#             */
+/*   Updated: 2022/04/01 11:45:43 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	print_map(t_data *data)
@@ -41,7 +53,21 @@ void	print_texture(t_data *data)
 	printf("Wall WE int:%p\n", data->wall->we.addr);
 	printf("Wall EA xpm:%p\n", data->wall->ea.img);
 	printf("Wall EA int:%p\n\n", data->wall->ea.addr);
-	printf("Floor:%d\n", data->wall->fl);
-	printf("Celling:%d\n", data->wall->cl);
+	printf("Floor:%d\n", data->fl);
+	printf("Celling:%d\n", data->cl);
 	printf("\t---END INFO TEXTURE---\n");
+}
+
+void	print_all(t_data *data)
+{
+	printf("\n\t---INFO ALL---\n");
+	printf("Screen img:%p\n", data->screen.img);
+	printf("data->size_screen :%d\n", data->size_screen);
+	printf("data->mmap.gr:%p\n", data->mmap.gr);
+	printf("ata->mmap.wl:%p\n", data->mmap.wl);
+	printf("data->mmap.pl:%p\n", data->mmap.pl);
+	printf("data->mmap.cdoor:%p\n", data->mmap.cdoor);
+	printf("data->mmap.odoor:%p\n", data->mmap.odoor);
+	printf("data->size:%d\n\n", data->size);
+	printf("\t---END INFO ALL---\n");
 }

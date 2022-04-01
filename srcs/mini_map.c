@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mini_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:01:44 by gsap              #+#    #+#             */
+/*   Updated: 2022/03/31 17:05:45 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	short_pitw(t_data *d, void *img, int x, int y)
@@ -55,14 +67,14 @@ void	ft_mini_map_if(t_data *d, int y, int x)
 	{
 		while (j < 2)
 		{
-			if (d->map[y + j][x + i] == '0')
-				short_pitw(d, d->mmap.gr, (i + 1) * 64, (j + 1) * 64);
 			if (d->map[y + j][x + i] == '1')
 				short_pitw(d, d->mmap.wl, (i + 1) * 64, (j + 1) * 64);
-			if (d->map[y + j][x + i] == '2')
+			else if (d->map[y + j][x + i] == '2')
 				short_pitw(d, d->mmap.cdoor, (i + 1) * 64, (j + 1) * 64);
-			if (d->map[y + j][x + i] == '3')
+			else if (d->map[y + j][x + i] == '3')
 				short_pitw(d, d->mmap.odoor, (i + 1) * 64, (j + 1) * 64);
+			else
+				short_pitw(d, d->mmap.gr, (i + 1) * 64, (j + 1) * 64);
 			j++;
 		}
 		j = -1;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/31 17:23:16 by gsap              #+#    #+#             */
+/*   Updated: 2022/04/01 13:23:54 by gsap             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -12,12 +24,10 @@
 # include "../minilibx-linux/mlx_int.h"
 
 # define PI 3.1415926535
-# define P2 PI / 2
-# define P3 3 * PI / 2
 # define MV 5
 # define DR 0.0174533
 
-typedef struct	s_imge
+typedef struct s_imge
 {
 	void	*img;
 	int		*addr;
@@ -26,21 +36,18 @@ typedef struct	s_imge
 	int		endian;
 }	t_imge;
 
-typedef struct	s_wall
+typedef struct s_wall
 {
 	t_imge			no;
 	t_imge			so;
 	t_imge			we;
 	t_imge			ea;
 
-	int				fl;
-	int				cl;
-
 	struct s_wall	*next;
 
 }	t_wall;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	float	xp;
 	float	yp;
@@ -50,7 +57,7 @@ typedef struct	s_player
 
 }	t_player;
 
-typedef struct	s_mini_map
+typedef struct s_mini_map
 {
 	void	*gr;
 	void	*wl;
@@ -61,21 +68,26 @@ typedef struct	s_mini_map
 	int		size_map;
 }	t_mini_map;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*mlx;
 	void		*win3d;
 
 	t_wall		*wall;
+	int			fl;
+	int			cl;
 	int			size;
 	t_player	*pl;
-	
+
 	char		**map;
 	int			h;
 	int			l;
 
 	t_mini_map	mmap;
-	
+
+	float		p2;
+	float		p3;
+
 	t_imge		screen;
 	int			size_screen;
 
@@ -110,9 +122,6 @@ typedef struct s_3d_draw
 	float	ty_step;
 }	t_3d_draw;
 
-int		mouse_hook(int mouse, t_data *data);
-void	init_mouse(t_data *data);
-
 /****************************/
 /*			PARSING			*/
 /****************************/
@@ -121,6 +130,8 @@ void	init_mouse(t_data *data);
 int		check_args(int argc, char **argv);
 int		check_good_format(char *file);
 int		error_file(int err);
+int		error_player(void);
+int		check_no_more(char *line, int i);
 
 //	parsing.c
 int		parsing(t_data *data, char *file);
@@ -132,7 +143,7 @@ void	convert_img_to_int(t_data *data);
 //	parsing_texture.c
 int		parse_wall(t_data *data, char *file);
 int		parse_texture(t_data *data, char *line);
-int		get_texture(t_data *data, char ** tab);
+int		get_texture(t_data *data, char **tab);
 int		get_color(char **line);
 int		one_line(char *line);
 
@@ -176,13 +187,14 @@ int		ft_game(t_data d);
 void	print_map(t_data *data);
 void	print_player(t_data *data);
 void	print_texture(t_data *data);
+void	print_all(t_data *data);
 
 /****************************/
 /*			END				*/
 /****************************/
 
 //	exit.c
-void 	exit_before_exec(t_data *data);
+void	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
 int		end_cub3d(t_data *data);
 
@@ -194,6 +206,13 @@ int		end_cub3d(t_data *data);
 /*			BONUS			*/
 /****************************/
 
+//	main_bonus.c
+int		sprite(t_data *d);
+void	first_sprite(t_data *d);
+void	second_sprite(t_data *d);
+void	destroy_sprite(t_data *data);
+//t_wall	*clear(t_wall *n, t_data *d);
+
 //	parsing_map_bonus.c
 int		parsing_bonus(t_data *data, char *file);
 int		parse_map_bonus(t_data *data, char *file);
@@ -204,8 +223,8 @@ void	get_map_bonus(t_data *data, char *file);
 /******************************************/
 
 //	check_deplacement.c
-int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
-int	ft_check_deplacement_2(t_data *d, t_player *p);
+int		ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);
+int		ft_check_deplacement_2(t_data *d, t_player *p);
 
 //	render_3d.c
 void	ft_3d_render(t_data *d);
