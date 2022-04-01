@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:23:16 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 13:23:54 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 15:01:53 by jgourlin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ void	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
 int		end_cub3d(t_data *data);
 
+
 /****************************/
 /*			MATH			*/
 /****************************/
@@ -210,8 +211,7 @@ int		end_cub3d(t_data *data);
 int		sprite(t_data *d);
 void	first_sprite(t_data *d);
 void	second_sprite(t_data *d);
-void	destroy_sprite(t_data *data);
-//t_wall	*clear(t_wall *n, t_data *d);
+
 
 //	parsing_map_bonus.c
 int		parsing_bonus(t_data *data, char *file);
@@ -219,6 +219,16 @@ int		parse_map_bonus(t_data *data, char *file);
 int		get_size_map_bonus(t_data *data, char *file);
 int		is_part_of_map_bonus(t_data *data, char *line);
 void	get_map_bonus(t_data *data, char *file);
+
+//	game_bonus.c
+int		ft_game_event_bonus(int key, t_data *d);
+int		ft_game_bonus(t_data d);
+
+//	exit_bonus.c
+void	exit_before_exec_bonus(t_data *data);
+int		end_cub3d_bonus(t_data *data);
+int		destroy_rec(t_data *data, t_wall *w, t_wall *deb, int i);
+void	destroy_sprite(t_data *data);
 
 /******************************************/
 

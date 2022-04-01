@@ -42,7 +42,7 @@ FILES = main.c check_args.c parsing.c parsing_texture.c parsing_map.c exit.c \
 FILES_BONUS = main_bonus.c check_args.c parsing.c parsing_texture.c parsing_map_bonus.c \
 	exit.c print_info.c check_map.c parsing_player.c mini_map.c game.c parsing_map.c \
 	check_deplacement.c render_3d.c check_horizon.c check_vertical.c \
-	calc_utils.c door.c utils_game.c render_3d_utils.c
+	calc_utils.c door.c utils_game.c render_3d_utils.c game_bonus.c exit_bonus.c
 
 #    Compilation
 NAME = cub3D
