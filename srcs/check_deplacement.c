@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:14 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 16:43:42 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 16:17:22 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_check_deplacement(t_data *d, t_player *p, float dx, float dy)
 	tx = p->xp - dx;
 	ty = p->yp - dy;
 	ft_check_door(tx, ty, d);
-	return (ft_check_radius(tx, ty, 5, d));
+	return (ft_check_radius(tx, ty, 10, d));
 }
 
 int	ft_check_deplacement_2(t_data *d, t_player *p)
@@ -67,5 +67,5 @@ int	ft_check_deplacement_2(t_data *d, t_player *p)
 	tx = p->xp + p->dxp;
 	ty = p->yp + p->dyp;
 	ft_check_door(tx, ty, d);
-	return (ft_check_radius(tx, ty, 5, d));
+	return (ft_check_radius(tx, ty, 10, d));
 }
