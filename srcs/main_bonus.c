@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:02:56 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 13:29:16 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 14:37:47 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	main(int argc, char **argv)
 		return (2);
 	if (parsing_bonus(&data, argv[1]))
 	{
-		exit_before_exec(&data);
+		exit_before_exec_bonus(&data);
 		return (3);
 	}
 	data.win3d = mlx_new_window(data.mlx, 720, 720, "cub3d");
-	ft_game(data);
-	end_cub3d(&data);
+	ft_game_bonus(data);
+	end_cub3d_bonus(&data);
 	return (0);
 }
 

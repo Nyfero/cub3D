@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:23:16 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 13:23:54 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 14:34:05 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,8 @@ void	print_all(t_data *data);
 void	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
 int		end_cub3d(t_data *data);
+void	exit_before_exec_bonus(t_data *data);
+int		end_cub3d_bonus(t_data *data);
 
 /****************************/
 /*			MATH			*/
@@ -211,7 +213,6 @@ int		sprite(t_data *d);
 void	first_sprite(t_data *d);
 void	second_sprite(t_data *d);
 void	destroy_sprite(t_data *data);
-//t_wall	*clear(t_wall *n, t_data *d);
 
 //	parsing_map_bonus.c
 int		parsing_bonus(t_data *data, char *file);
@@ -219,6 +220,10 @@ int		parse_map_bonus(t_data *data, char *file);
 int		get_size_map_bonus(t_data *data, char *file);
 int		is_part_of_map_bonus(t_data *data, char *line);
 void	get_map_bonus(t_data *data, char *file);
+
+//	game_bonus.c
+int		ft_game_event_bonus(int key, t_data *d);
+int		ft_game_bonus(t_data d);
 
 /******************************************/
 

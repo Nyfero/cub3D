@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:01:12 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 13:27:39 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 14:36:54 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,9 @@ int	end_cub3d(t_data *data)
 
 void	exit_before_exec_bonus(t_data *data)
 {
-	//destroy_sprite(data);
-	/*free_img(data);
+	destroy_sprite(data);
 	if (data->wall)
-		free(data->wall);*/
+		free(data->wall);
 	if (data->map)
 		ft_free_ls(data->map);
 	if (data->pl)
@@ -76,7 +75,6 @@ void	exit_before_exec_bonus(t_data *data)
 int	end_cub3d_bonus(t_data *data)
 {
 	destroy_sprite(data);
-	//free_img(data);
 	if (data->wall)
 		free(data->wall);
 	mlx_clear_window(data->mlx, data->win3d);
