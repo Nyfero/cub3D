@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:26 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 18:10:25 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 15:39:53 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,7 @@ int	ft_game_event(int key, t_data *d)
 		ft_deplacement_hor(d, 1, d->pl);
 	if (key == 65307 || key == 65361 || key == 65363 || key == 119 || key == 97
 		|| key == 115 || key == 100)
-	{
 		ft_3d_render(d);
-		if (d->wall->next)
-			d->wall = d->wall->next;
-	}
 	return (0);
 }
 

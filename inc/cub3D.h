@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:23:16 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 15:01:53 by jgourlin         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:55:57 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,11 @@ int		get_texture(t_data *data, char **tab);
 int		get_color(char **line);
 int		one_line(char *line);
 
+//	get_color.c
+int		get_red(char *line);
+int		get_green(char *line);
+int		get_blue(char *line);
+
 //	parsing_map.c
 int		parse_map(t_data *data, char *file);
 int		get_size_map(t_data *data, char *file);
@@ -198,11 +203,6 @@ void	exit_before_exec(t_data *data);
 void	free_img(t_data *data);
 int		end_cub3d(t_data *data);
 
-
-/****************************/
-/*			MATH			*/
-/****************************/
-
 /****************************/
 /*			BONUS			*/
 /****************************/
@@ -211,7 +211,6 @@ int		end_cub3d(t_data *data);
 int		sprite(t_data *d);
 void	first_sprite(t_data *d);
 void	second_sprite(t_data *d);
-
 
 //	parsing_map_bonus.c
 int		parsing_bonus(t_data *data, char *file);
@@ -230,7 +229,9 @@ int		end_cub3d_bonus(t_data *data);
 int		destroy_rec(t_data *data, t_wall *w, t_wall *deb, int i);
 void	destroy_sprite(t_data *data);
 
-/******************************************/
+/****************************/
+/*			MATH			*/
+/****************************/
 
 //	check_deplacement.c
 int		ft_check_deplacement(t_data *d, t_player *p, float dx, float dy);

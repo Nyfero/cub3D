@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:02:02 by gsap              #+#    #+#             */
-/*   Updated: 2022/04/01 11:44:08 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 15:49:20 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,22 +121,19 @@ int	one_line(char *line)
 	int	i;
 
 	i = 0;
-	r = ft_atoi(line);
-	if (r >= 256)
-		return (-2);
-	i += len_nbr(r) + 1;
+	r = get_red(line);
+	while (ft_isdigit(line[++i]))
+		;
 	if (!line[i])
 		return (0 << 24 | r << 16 | 0 << 8 | 0);
-	g = ft_atoi(&line[i]);
-	if (g >= 256)
-		return (-2);
-	i += len_nbr(g) + 1;
+	g = get_green(&line[i]);
+	while (ft_isdigit(line[++i]))
+		;
 	if (!line[i])
 		return (0 << 24 | r << 16 | g << 8 | 0);
-	b = ft_atoi(&line[i]);
-	if (b >= 256)
-		return (-2);
-	i += len_nbr(b);
+	b = get_blue(&line[i]);
+	while (ft_isdigit(line[++i]))
+		;
 	if (check_no_more(line, i))
 		return (-2);
 	return (0 << 24 | r << 16 | g << 8 | b);

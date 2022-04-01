@@ -17,40 +17,40 @@ NC='\033[0m' # No Color
 
 # WITHOUT VALGRIND
 echo -e "\n${RED}BAD COLOUR ${NC}"
-./cub3D ./wrong_file/bad_colour.cub
+./cub3D_bonus ./wrong_file/bad_colour.cub
 echo -e "\n${BLUE}BAD COLOUR 2 ${NC}"
-./cub3D ./wrong_file/bad_colour2.cub
+./cub3D_bonus ./wrong_file/bad_colour2.cub
 echo -e "\n${GREEN}BAD COLOUR 3 ${NC}"
-./cub3D ./wrong_file/bad_colour3.cub
+./cub3D_bonus ./wrong_file/bad_colour3.cub
 
 echo -e "\n${RED}BAD ELEMENT ${NC}"
-./cub3D ./wrong_file/bad_element.cub
+./cub3D_bonus ./wrong_file/bad_element.cub
 echo -e "\n${BLUE}BAD EXTENSION ${NC}"
-./cub3D ./wrong_file/bad_extension.poil
+./cub3D_bonus ./wrong_file/bad_extension.poil
 echo -e "\n${GREEN}BAD TEXTURES ${NC}"
-./cub3D ./wrong_file/bad_textures.cub
+./cub3D_bonus ./wrong_file/bad_textures.cub
 
 echo -e "\n${RED}DOUBLON ${NC}"
-./cub3D ./wrong_file/doublon.cub
+./cub3D_bonus ./wrong_file/doublon.cub
 echo -e "\n${BLUE}MAP WRONG CARACTER ${NC}"
-./cub3D ./wrong_file/map_bad_caracter.cub
+./cub3D_bonus ./wrong_file/map_bad_caracter.cub
 echo -e "\n${GREEN}MAP FIRST ${NC}"
-./cub3D ./wrong_file/map_first.cub
+./cub3D_bonus ./wrong_file/map_first.cub
 
 echo -e "\n${RED}MAP EMPTY LINE ${NC}"
-./cub3D ./wrong_file/map_line_empty.cub
+./cub3D_bonus ./wrong_file/map_line_empty.cub
 echo -e "\n${BLUE}MAP NOT CLOSE ${NC}"
-./cub3D ./wrong_file/map_not_close.cub
+./cub3D_bonus ./wrong_file/map_not_close.cub
 echo -e "\n${GREEN}MAP NOT CLOSE 2 ${NC}"
-./cub3D ./wrong_file/map_not_close2.cub
+./cub3D_bonus ./wrong_file/map_not_close2.cub
 
 echo -e "\n${RED}NO PLAYER ${NC}"
-./cub3D ./wrong_file/map_no_player.cub
+./cub3D_bonus ./wrong_file/map_no_player.cub
 echo -e "\n${BLUE}TWO PLAYER ${NC}"
-./cub3D ./wrong_file/map_two_players.cub
+./cub3D_bonus ./wrong_file/map_two_players.cub
 echo -e "\n${GREEN}NO MAP ${NC}"
-./cub3D ./wrong_file/no_map.cub
+./cub3D_bonus ./wrong_file/no_map.cub
 echo -e "\n${RED}FILE IS A DIRECTORY ${NC}"
-./cub3D libft
+./cub3D_bonus libft
 echo -e "\n${YELLOW}WHAT HAPPENED WITH ENV ? ${NC}"
-env -i ./cub3D file.cub
+env -i ./cub3D_bonus file.cub
