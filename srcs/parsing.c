@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:02:06 by gsap              #+#    #+#             */
-/*   Updated: 2022/03/31 17:36:52 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 11:43:35 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 int	parsing(t_data *data, char *file)
 {
+	char	*tmp;
+
 	if (init_wall(data))
 		return (1);
 	if (parse_wall(data, file))
 		return (1);
 	if (!data->wall->no.img || !data->wall->so.img || !data->wall->we.img
-		|| !data->wall->ea.img || data->wall->fl < 0 || data->wall->cl < 0)
+		|| !data->wall->ea.img || data->fl < 0 || data->cl < 0)
 		return (error_file(6));
 	data->screen.img = mlx_new_image(data->mlx, 720, 720);
+	tmp = mlx_get_data_addr(data->screen.img, &data->screen.pixel,
+			&data->screen.line, &data->screen.endian);
+	data->screen.addr = (int *)tmp;
 	convert_img_to_int(data);
 	if (parse_map(data, file))
 		return (1);
@@ -41,6 +46,7 @@ int	init_wall(t_data *data)
 	data->wall->so.img = NULL;
 	data->wall->we.img = NULL;
 	data->wall->ea.img = NULL;
+	data->wall->next = NULL;
 	data->screen.img = NULL;
 	data->size_screen = 720;
 	data->mmap.gr = NULL;
@@ -48,8 +54,8 @@ int	init_wall(t_data *data)
 	data->mmap.pl = NULL;
 	data->mmap.cdoor = NULL;
 	data->mmap.odoor = NULL;
-	data->wall->fl = -1;
-	data->wall->cl = -1;
+	data->fl = -1;
+	data->cl = -1;
 	data->size = 64;
 	data->h = 0;
 	data->l = 0;
@@ -115,7 +121,4 @@ void	convert_img_to_int(t_data *data)
 	tmp = mlx_get_data_addr(data->wall->ea.img, &data->wall->ea.pixel,
 			&data->wall->ea.line, &data->wall->ea.endian);
 	data->wall->ea.addr = (int *)tmp;
-	tmp = mlx_get_data_addr(data->screen.img, &data->screen.pixel,
-			&data->screen.line, &data->screen.endian);
-	data->screen.addr = (int *)tmp;
 }

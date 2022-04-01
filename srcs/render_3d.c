@@ -6,7 +6,7 @@
 /*   By: jgourlin <jgourlin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:45:36 by jgourlin          #+#    #+#             */
-/*   Updated: 2022/03/31 17:08:26 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 11:45:06 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_3d_draw(t_data *d, float dist, t_3d_dist s, int *img)
 	while (g.y < d->size_screen)
 	{
 		if (g.y < g.line_o)
-			my_mlx_pixel_put(&d->screen, s.r, g.y, d->wall->cl);
+			my_mlx_pixel_put(&d->screen, s.r, g.y, d->cl);
 		else if (g.y > g.line_o && g.y <= g.line_o + g.line_h)
 		{	
 			my_mlx_pixel_put(&d->screen, s.r, g.y,
@@ -36,7 +36,7 @@ void	ft_3d_draw(t_data *d, float dist, t_3d_dist s, int *img)
 			g.ty += g.ty_step;
 		}
 		else
-			my_mlx_pixel_put(&d->screen, s.r, g.y, d->wall->fl);
+			my_mlx_pixel_put(&d->screen, s.r, g.y, d->fl);
 		g.y++;
 	}
 }

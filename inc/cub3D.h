@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:23:16 by gsap              #+#    #+#             */
-/*   Updated: 2022/03/31 18:10:30 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 13:23:54 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ typedef struct s_wall
 	t_imge			we;
 	t_imge			ea;
 
-	int				fl;
-	int				cl;
-
 	struct s_wall	*next;
 
 }	t_wall;
@@ -77,6 +74,8 @@ typedef struct s_data
 	void		*win3d;
 
 	t_wall		*wall;
+	int			fl;
+	int			cl;
 	int			size;
 	t_player	*pl;
 
@@ -206,6 +205,13 @@ int		end_cub3d(t_data *data);
 /****************************/
 /*			BONUS			*/
 /****************************/
+
+//	main_bonus.c
+int		sprite(t_data *d);
+void	first_sprite(t_data *d);
+void	second_sprite(t_data *d);
+void	destroy_sprite(t_data *data);
+//t_wall	*clear(t_wall *n, t_data *d);
 
 //	parsing_map_bonus.c
 int		parsing_bonus(t_data *data, char *file);

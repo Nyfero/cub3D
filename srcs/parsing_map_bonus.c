@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:01:48 by gsap              #+#    #+#             */
-/*   Updated: 2022/03/31 17:01:50 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 11:43:18 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 int	parsing_bonus(t_data *data, char *file)
 {
+	char	*tmp;
+
 	if (init_wall(data))
 		return (1);
 	if (parse_wall(data, file))
 		return (1);
 	if (!data->wall->no.img || !data->wall->so.img || !data->wall->we.img
-		|| !data->wall->ea.img || data->wall->fl < 0 || data->wall->cl < 0)
+		|| !data->wall->ea.img || data->fl < 0 || data->cl < 0)
 		return (error_file(6));
 	data->screen.img = mlx_new_image(data->mlx, 720, 720);
+	tmp = mlx_get_data_addr(data->screen.img, &data->screen.pixel,
+			&data->screen.line, &data->screen.endian);
+	data->screen.addr = (int *)tmp;
 	convert_img_to_int(data);
 	if (parse_map_bonus(data, file))
 		return (1);
 	if (create_mini_bonus(data))
+		return (1);
+	if (sprite(data))
 		return (1);
 	return (0);
 }

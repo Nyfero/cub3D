@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:02:10 by gsap              #+#    #+#             */
-/*   Updated: 2022/03/31 17:02:11 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 11:45:43 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	print_texture(t_data *data)
 	printf("Wall WE int:%p\n", data->wall->we.addr);
 	printf("Wall EA xpm:%p\n", data->wall->ea.img);
 	printf("Wall EA int:%p\n\n", data->wall->ea.addr);
-	printf("Floor:%d\n", data->wall->fl);
-	printf("Celling:%d\n", data->wall->cl);
+	printf("Floor:%d\n", data->fl);
+	printf("Celling:%d\n", data->cl);
 	printf("\t---END INFO TEXTURE---\n");
 }
 

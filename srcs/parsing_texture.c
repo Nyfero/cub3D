@@ -6,7 +6,7 @@
 /*   By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 17:02:02 by gsap              #+#    #+#             */
-/*   Updated: 2022/03/31 17:37:44 by gsap             ###   ########.fr       */
+/*   Updated: 2022/04/01 11:44:08 by gsap             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ int	get_texture(t_data *d, char **tab)
 	else if (!ft_strncmp(tab[0], "EA", ft_strlen(tab[0])) && !d->wall->ea.img)
 		d->wall->ea.img = mlx_xpm_file_to_image(d->mlx, tab[1],
 				&d->size, &d->size);
-	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && d->wall->cl == -1)
-		d->wall->cl = get_color(tab);
-	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && d->wall->fl == -1)
-		d->wall->fl = get_color(tab);
+	else if (!ft_strncmp(tab[0], "C", ft_strlen(tab[0])) && d->cl == -1)
+		d->cl = get_color(tab);
+	else if (!ft_strncmp(tab[0], "F", ft_strlen(tab[0])) && d->fl == -1)
+		d->fl = get_color(tab);
 	else
 		return (error_file(5));
+	if (d->cl == -2 || d->fl == -2)
+		return (1);
 	return (0);
 }
 
